@@ -12,7 +12,7 @@ public class MPlayer : MonoBehaviour
     Vector3 dir;
     bool crushbox;
 
-    Animator animator;
+    public Animator animator;
     // 0 : 기본상태 1: 점프대 2: 가속
 
 
@@ -25,7 +25,7 @@ public class MPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        
         cc = GetComponent<CharacterController>();
 
     }
@@ -33,11 +33,24 @@ public class MPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gravity = crushbox == false ? -5 : -15;
+        //gravity = crushbox == false ? -5 : -15;
+        gravity = -5;
 
 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+
+        if ((h + v) == 0)
+        {
+            animator.SetBool("isRun", false);
+        }
+        else
+        {
+            animator.SetBool("isRun", true);
+        }
+
+
 
         if (gate == true)
         {
