@@ -130,14 +130,11 @@ public class FlowerMove : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    
+
+    private void OnTriggerEnter(Collider other)
     {
-        //GameObject.SetActive(true);
-        Destroy(this.gameObject);
-
-
-        
-
-
+        if(other.name.Contains("Mario"))
+            Destroy(this.gameObject);
     }
 }

@@ -56,11 +56,13 @@ public class Koopamove : MonoBehaviour
 
         //}
     }
-    private void OnCollisionEnter(Collision collision)
+
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name.Contains("Mario"))
+        if (other.gameObject.name.Contains("Mario"))
         {
-            
+
             kstack -= 1;
             if (kstack == -2)
             {
@@ -75,11 +77,11 @@ public class Koopamove : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(shell.transform.position - this.transform.position);
             transform.position += direction * kspeed * Time.deltaTime;
 
-            if(collision.gameObject.name.Contains("Shell"))
+            if (other.gameObject.name.Contains("Shell"))
             {
                 this.koopamotion.SetTrigger("shell");
                 Destroy(shell);
-                
+
             }
         }
     }

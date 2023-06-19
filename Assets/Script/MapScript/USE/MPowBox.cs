@@ -7,7 +7,7 @@ public class MPowBox : MonoBehaviour
     SphereCollider Scollider;
     bool trig;
     public int limitRadius = 3;
-
+    public int speed = 10;
     void Start()
     {
         Scollider = gameObject.GetComponent<SphereCollider>();
@@ -21,7 +21,7 @@ public class MPowBox : MonoBehaviour
         if(trig==true)
         {
             Scollider.enabled = true;
-            Scollider.radius += 10f*Time.deltaTime;
+            Scollider.radius += speed*Time.deltaTime;
         }
         if(Scollider.radius> limitRadius)
         {
