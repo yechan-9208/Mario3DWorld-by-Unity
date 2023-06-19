@@ -29,9 +29,9 @@ public class MDount : MonoBehaviour
 
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
+
         Renderer rend = transform.GetChild(1).GetComponent<Renderer>();
         rend.material.color = new Color(1f, 0.513f, 0.513f);
         trig = true;

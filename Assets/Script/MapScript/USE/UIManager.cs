@@ -7,12 +7,14 @@ public class UIManager : MonoBehaviour
 {
 
     public static UIManager instance = null;
+    public GameObject UI;
+     public bool check;
     private void Awake()
     {
         instance = this;
     }
 
-
+       
     int coin;
     public TextMeshProUGUI CoinScore;
     int time;
@@ -52,11 +54,14 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if(currentTime>=1f)
+        if(UI.activeSelf)
         {
-            TIME--;
-            currentTime = 0;
+            currentTime += Time.deltaTime;
+            if (currentTime >= 1f)
+            {
+                TIME--;
+                currentTime = 0;
+            }
         }
     }
 

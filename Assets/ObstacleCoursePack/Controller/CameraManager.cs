@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraManager : MonoBehaviour {
 
 	public float followSpeed = 3; //Speed ​​at which the camera follows us
@@ -29,7 +30,6 @@ public class CameraManager : MonoBehaviour {
 
 	public void Init()
 	{
-		camTrans = Camera.main.transform;
 		pivot = camTrans.parent;
 	}
 
