@@ -11,6 +11,7 @@ public class EnemyMove : MonoBehaviour
     public float speed = 3;
     Vector3 direction;
     public Animator goombamotion;
+    public float currentAngle;
 
     //NavMeshAgent nav;
     // Start is called before the first frame update
@@ -25,7 +26,6 @@ public class EnemyMove : MonoBehaviour
         void Update()
         {
             direction = Mario.transform.position - this.transform.position;
-            this.goombamotion.SetTrigger("walk");
 
 
             //transform.position += direction * speed * Time.deltaTime;
@@ -40,11 +40,20 @@ public class EnemyMove : MonoBehaviour
                 this.goombamotion.SetTrigger("run");
                 transform.position += direction * speed * Time.deltaTime;
             }
-            //else if
+            //else
             //{
-            //    this.goombamotion.SetTrigger("not found");
+            //    this.goombamotion.SetTrigger("walk");
+            //    //transform.rotation
+            //    //transform.Translate(Vector3.forward * Time.deltaTime, Space.World);
+            //    transform.position += transform.forward * speed * Time.deltaTime;
+            //    //transform.right += 90;
             //}
-            if(size < 1f)
+
+        //else if
+        //{
+        //    this.goombamotion.SetTrigger("not found");
+        //}
+        if (size < 1f)
             {
                 this.goombamotion.SetTrigger("attack");
             }

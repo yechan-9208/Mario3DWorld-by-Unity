@@ -30,7 +30,7 @@ public class Koopamove : MonoBehaviour
         //Vector3 direction = Mario.transform.position - transform.position;
         float size = direction.magnitude;
 
-        if (size < 10f)
+        if ( size >= 1f && size <= 10f)
         {
             transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
             this.koopamotion.SetTrigger("find");
@@ -38,11 +38,11 @@ public class Koopamove : MonoBehaviour
             direction.Normalize();
             transform.position += direction * kspeed * Time.deltaTime;
         }
-        if (size > 10f)
+        else if(size > 10f)
         {
             this.koopamotion.SetTrigger("not found");
         }
-        if (size == 1)
+        else
         {
             //StartCoroutine(Attack);
             this.koopamotion.SetTrigger("attack");
