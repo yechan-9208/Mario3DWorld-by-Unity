@@ -13,16 +13,11 @@ public class EnemyMove : MonoBehaviour
     public Animator goombamotion;
     public float currentAngle;
 
-    //NavMeshAgent nav;
-    // Start is called before the first frame update
+  
     void Start()
     {
-
-        //direction = Mario.transform.position - this.transform.position;
-        //direction.Normalize();
     }
 
-        // Update is called once per frame
         void Update()
         {
             direction = Mario.transform.position - this.transform.position;

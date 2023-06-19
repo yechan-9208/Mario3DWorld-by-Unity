@@ -4,6 +4,9 @@ using UnityEngine;
 //using UnityEngine.AI;
 //목표를 향해 이동하고 싶다.
 //public class SetActive();
+
+//엉금엉금은 이동하고싶다.
+//엉금엉금은 
 public class Koopamove : MonoBehaviour
 {
     
