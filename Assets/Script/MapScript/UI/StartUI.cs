@@ -17,11 +17,15 @@ public class StartUI : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Alpha1) && !(trig))
         {
-			print("sd");
-			
 			MoveUI();
 			trig = true;
 		}
+	}
+
+	void changeUI()
+    {
+		GameManager.instance.gameStartUI.SetActive(false);
+		GameManager.instance.gamingUI.SetActive(true);
 	}
 
 	void MoveUI()
@@ -31,7 +35,10 @@ public class StartUI : MonoBehaviour
 				"x", Screen.width,
 				"easeType", iTween.EaseType.easeInOutSine,
 				"delay", 0.1f,
-				"oncompletetarget", gameObject));
+				"oncompletetarget", gameObject,
+				"oncomplete", nameof(changeUI)));
 	}
+
+
 }
 
