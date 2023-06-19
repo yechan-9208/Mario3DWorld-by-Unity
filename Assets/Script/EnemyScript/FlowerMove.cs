@@ -18,17 +18,25 @@ using UnityEngine;
 
 public class FlowerMove : MonoBehaviour
 {
+<<<<<<< HEAD
     int IDLE = 0;
     int FIND = 1;
     int ATTACK = 2;
 
     int state;
 
+=======
+    public int stackf;
+>>>>>>> main
     public GameObject Mario;
-    public float speed = 0.3f;
+    public float speed = 1;
     Vector3 direction;
+<<<<<<< HEAD
     public Animator flowermotion;
     public bool mariomove = false;
+=======
+
+>>>>>>> main
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +47,7 @@ public class FlowerMove : MonoBehaviour
     void Update()
     {
         direction = Mario.transform.position - this.transform.position;
+<<<<<<< HEAD
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
         if (state == IDLE)
@@ -85,6 +94,14 @@ public class FlowerMove : MonoBehaviour
             this.flowermotion.SetTrigger("find");
             state = FIND;
         }
+=======
+        direction.Normalize();
+
+        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+
+
+
+>>>>>>> main
     }
 
     private void UpdateFind()
@@ -116,8 +133,12 @@ public class FlowerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        this.flowermotion.SetTrigger("press");
         //GameObject.SetActive(true);
         Destroy(this.gameObject);
+<<<<<<< HEAD
+=======
+        stackf -= 1;
+
+>>>>>>> main
     }
 }

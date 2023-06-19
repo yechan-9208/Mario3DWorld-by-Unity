@@ -7,20 +7,23 @@ public class Mgoal : MonoBehaviour
 {
     public Animator anim;
     GameObject child;
+    AudioSource finish;
+    public GameObject gamingSound;
+    AudioSource sound;
 
     float currTime = 0;
     float AftFlagTime = 1.5f;
+    float EndTime = 3f;
     bool AftCheck;
-    public AudioSource bgm;
-    AudioSource Finish;
 
 
     void Start()
     {
-       Finish = gameObject.GetComponent<AudioSource>();
+        finish = GetComponent<AudioSource>();
+        finish.Stop();
+        sound = gamingSound.GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (AftCheck)
@@ -31,23 +34,30 @@ public class Mgoal : MonoBehaviour
                 child = gameObject.transform.GetChild(1).gameObject;
                 child.SetActive(true);
             }
+            if (currTime >= EndTime)
+            {
+                GameManager.instance.gameEndUI.SetActive(true);
+                GameManager.instance.gamingUI.SetActive(false);
+
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-  
         if (!AftCheck)
         {
-            bgm.Stop();
-            Finish.Play();
             anim.SetTrigger("Goal");
+            sound.Stop();
+            finish.Play();
+
         }
+
         child = gameObject.transform.GetChild(0).gameObject;
         child.SetActive(false);
         AftCheck = true;
-     
 
-   
+
+
     }
 }
