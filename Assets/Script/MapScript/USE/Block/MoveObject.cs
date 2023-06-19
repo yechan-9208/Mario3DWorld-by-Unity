@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MBoxsMove : MonoBehaviour
+public class MoveObject : MonoBehaviour
 {
     public float speed = 1f;
     public float changeTime = 5f;

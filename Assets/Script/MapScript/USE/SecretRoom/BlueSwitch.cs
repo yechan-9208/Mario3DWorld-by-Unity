@@ -18,16 +18,11 @@ public class BlueSwitch : MonoBehaviour
             bluecoin = value;
         }
     }
-
-
     void Start()
     {
-
         head = GameObject.FindGameObjectWithTag("Switch");
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         switch (pase)
@@ -35,7 +30,6 @@ public class BlueSwitch : MonoBehaviour
             case 1:
                 {
                     BlueCoinPase[0].SetActive(true);
-
                     if (BLUECOIN == 9)
                     {
                         pase++;
@@ -55,7 +49,6 @@ public class BlueSwitch : MonoBehaviour
                 }
             case 3:
                 {
-
                     BlueCoinPase[2].SetActive(true); break;
                     if (BLUECOIN == 23)
                     {

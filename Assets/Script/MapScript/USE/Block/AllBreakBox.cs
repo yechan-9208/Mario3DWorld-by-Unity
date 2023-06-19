@@ -5,18 +5,6 @@ using UnityEngine;
 public class AllBreakBox : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
 
@@ -32,7 +20,6 @@ public class AllBreakBox : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
 
     void Movebox(float delayTime)
     {
