@@ -10,15 +10,15 @@ public class MBouce : MonoBehaviour
     public Animator anim;
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name.Contains("Mario"))
-        {
-            MPlayer player_trig = player.GetComponent<MPlayer>();
-            player_trig.map_trig = 1;
-            anim.SetTrigger("Jump");
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.name.Contains("Mario"))
+    //    {
+    //        MPlayer player_trig = player.GetComponent<MPlayer>();
+    //        player_trig.map_trig = 1;
+    //        anim.SetTrigger("Jump");
+    //    }
+    //}
 
     private void OnTriggerExit(Collider other)
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MPlayer : MonoBehaviour
+public class MPlayer1 : MonoBehaviour
 {
     //bool crushbox; 블럭과 부딫침 체크
 
@@ -18,7 +18,7 @@ public class MPlayer : MonoBehaviour
 
     CharacterController cc;
 
-    float gravity;
+    float gravity=10f;
     float yVelocity = 0;
     float jumpPower = 2f;
     #endregion
@@ -32,7 +32,7 @@ public class MPlayer : MonoBehaviour
     void Update()
     {
         //gravity = crushbox == false ? -5 : -15;
-        gravity = -5;
+        //gravity = -5;
 
         // 입력 처리
         float h = Input.GetAxisRaw("Horizontal");
@@ -59,6 +59,7 @@ public class MPlayer : MonoBehaviour
         {
             if (false == isJunmp)
             {
+                gravity = -5f;
                 yVelocity = jumpPower;
                 animator.SetTrigger("Jump");
                 isJunmp = true;
@@ -76,14 +77,6 @@ public class MPlayer : MonoBehaviour
 
     }
     #endregion
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(isJunmp)
-        {
-            isJunmp = false;
-        }
-    }
 
 
 
