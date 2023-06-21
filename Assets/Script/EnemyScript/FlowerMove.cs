@@ -18,25 +18,23 @@ using UnityEngine;
 
 public class FlowerMove : MonoBehaviour
 {
-<<<<<<< HEAD
+
     int IDLE = 0;
     int FIND = 1;
     int ATTACK = 2;
 
     int state;
 
-=======
-    public int stackf;
->>>>>>> main
+
+    public int stackf=0;
+
     public GameObject Mario;
     public float speed = 1;
     Vector3 direction;
-<<<<<<< HEAD
+
     public Animator flowermotion;
     public bool mariomove = false;
-=======
 
->>>>>>> main
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +45,7 @@ public class FlowerMove : MonoBehaviour
     void Update()
     {
         direction = Mario.transform.position - this.transform.position;
-<<<<<<< HEAD
+
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
         if (state == IDLE)
@@ -93,15 +91,17 @@ public class FlowerMove : MonoBehaviour
         {
             this.flowermotion.SetTrigger("find");
             state = FIND;
+            //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+            transform.LookAt(Mario.transform.position, Vector3.up);
+
+            direction.Normalize();
         }
-=======
-        direction.Normalize();
-
-        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
 
 
 
->>>>>>> main
+
+
+
     }
 
     private void UpdateFind()
@@ -112,8 +112,10 @@ public class FlowerMove : MonoBehaviour
         //    Attack으로 전이
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        if(size < 5f)
+        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        transform.LookAt(Mario.transform.position, Vector3.up);
+
+        if (size < 5f)
         {
             state = ATTACK;
 
@@ -125,20 +127,18 @@ public class FlowerMove : MonoBehaviour
         //    애니메이션, 플레이어 방향으로 회전, 실제 공격행위
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        transform.LookAt(Mario.transform.position, Vector3.up);
+
         this.flowermotion.SetTrigger("attack");
 
 
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //GameObject.SetActive(true);
-        Destroy(this.gameObject);
-<<<<<<< HEAD
-=======
-        stackf -= 1;
-
->>>>>>> main
+        if(other.gameObject.name.Contains("Mario"))
+        {
+            Destroy(this.gameObject);            
+        }
     }
 }
