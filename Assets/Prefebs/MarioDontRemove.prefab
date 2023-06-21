@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 1609175741800057584}
   - component: {fileID: 1609175741800057585}
   m_Layer: 0
-  m_Name: MarioHeadCollider
+  m_Name: HeadCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

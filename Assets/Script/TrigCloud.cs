@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
+public class TrigCloud : MonoBehaviour
 {
+    public GameObject realCloud;
     Collider cloud;
+
     // Start is called before the first frame update
     void Start()
     {
-        cloud = GetComponent<BoxCollider>();
+        cloud = realCloud.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,10 @@ public class Cloud : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        cloud.enabled = true;
+        if (other.gameObject.name.Contains("Mario"))
+        {
+     
+               cloud.enabled = true;
+        }
     }
 }

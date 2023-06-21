@@ -50,7 +50,7 @@ public class MBox : MonoBehaviour
 
                         Movebox(0.1f);
                     }
-                    else if (other.gameObject.name.Contains("Mario"))
+                    else if (other.gameObject.name.Contains("Head"))
                     {
                         if (gameObject.name.Contains("Pow"))
                         {

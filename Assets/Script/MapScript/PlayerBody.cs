@@ -19,10 +19,10 @@ public class PlayerBody : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!other.gameObject.name.Contains("Mario"))
+        if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin"))
         {
             Player.isWall = true;
-            //print("wall");
+            print(other);
         }
     }
     

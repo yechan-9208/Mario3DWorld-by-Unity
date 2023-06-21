@@ -25,11 +25,21 @@ public class PlayerFoot : MonoBehaviour
         {
             if (Player.isJunmp)
             {
+                print(other);
                 Player.isJunmp = false;
                 Player.gravityCondition = "defaultGravity";
             }
             //print("foot: " + other);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.name.Contains("RealCloud"))
+        {
+            Player.isJunmp = false;
+        }
+    }
+
 
 }
