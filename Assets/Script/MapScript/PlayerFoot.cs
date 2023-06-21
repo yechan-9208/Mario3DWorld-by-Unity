@@ -25,7 +25,7 @@ public class PlayerFoot : MonoBehaviour
         {
             if (Player.isJunmp)
             {
-                print(other);
+                //print(other);
                 Player.isJunmp = false;
                 Player.gravityCondition = "defaultGravity";
             }

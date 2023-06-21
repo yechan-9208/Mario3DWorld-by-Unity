@@ -22,7 +22,7 @@ public class PlayerBody : MonoBehaviour
         if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin"))
         {
             Player.isWall = true;
-            print(other);
+            //print(other);
         }
     }
     
