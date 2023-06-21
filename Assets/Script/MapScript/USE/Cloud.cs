@@ -19,7 +19,11 @@ public class Cloud : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        cloud.enabled = false;
+        if (other.gameObject.name.Contains("Mario"))
+        {
+            cloud.enabled = false;
+
+        }
     }
     private void OnTriggerExit(Collider other)
     {

@@ -4,43 +4,60 @@ using UnityEngine;
 
 public class MPlayer : MonoBehaviour
 {
+
+    public static MPlayer instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
+    public float Gravity
+    {
+        get { return gravity; }
+        set { gravity = value; }
+    }
+
+
+    //bool crushbox; 블럭과 부딫침 체크
+
+    #region 변수 선언
     public float speed = 5f;
-    public int map_trig = 0;
     public bool gate = false;
-    private Coroutine checkCorot;
-    public Vector3 pipe;
+    public bool isJunmp;
+    public string gravityCondition;
+    public bool isWall;
     Vector3 dir;
-    bool crushbox;
+
 
     public Animator animator;
-    // 0 : 기본상태 1: 점프대 2: 가속
-
+    // 0: 기본상태, 1: 점프대, 2: 가속
 
     CharacterController cc;
 
-    float gravity;
+    public float gravity = -1f;
     float yVelocity = 0;
     float jumpPower = 2f;
+    #endregion
 
-    // Start is called before the first frame update
+    #region 시작과 업데이트
     void Start()
     {
-        
+        gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         //gravity = crushbox == false ? -5 : -15;
-        gravity = -5;
 
 
-
+        // 입력 처리
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
+        // 달리기 애니메이션 설정
         if ((h + v) == 0)
         {
             animator.SetBool("isRun", false);
@@ -48,164 +65,64 @@ public class MPlayer : MonoBehaviour
         else
         {
             animator.SetBool("isRun", true);
+            Vector3 face = Vector3.right * h + Vector3.forward * v;
+            face.Normalize();
+            transform.forward = face;
         }
 
+        dir = Vector3.right * h + Vector3.forward * v;
+        dir.Normalize();
 
+        // 점프 처리
 
-        if (gate == true)
+        /*  gravityCondition = "defaultGravity";*/ //기본중력
+        if (Input.GetButtonDown("Jump"))
         {
-            gameObject.SetActive(false);
-            transform.position = pipe;
-            gameObject.SetActive(true);
-            gate = false;
-        }
-        else
-        {
-                dir = Vector3.right * h + Vector3.forward * v;
-                dir.Normalize();
- 
-            if (Input.GetButtonDown("Jump"))
+            if (false == isJunmp)
             {
+                gravityCondition = "jumpGravity"; ; //점프중력
                 yVelocity = jumpPower;
                 animator.SetTrigger("Jump");
+                isJunmp = true;
             }
 
-            yVelocity += gravity * Time.deltaTime;
-            dir += Vector3.up * yVelocity;
-
-            //transform.position += vec * speed * Time.deltaTime;
-            cc.Move(dir * speed * Time.deltaTime);
+        
         }
+
+
+
+
+        Gravitycheck(gravityCondition);
+
+        yVelocity += gravity * Time.deltaTime;
+        dir += Vector3.up * yVelocity;
+        cc.Move(dir * speed * Time.deltaTime);
+
     }
-    private IEnumerator go()
+    #endregion
+
+    void Gravitycheck(string gravityCondition)
     {
-        yield return new WaitForSeconds(0.5f);
-        map_trig = 0;
-        checkCorot = null;
+        switch (gravityCondition)
+        {
+            case "defaultGravity": //기본중력
+                {
+                    Gravity = -1;
+                    break;
+                }
+            case "jumpGravity": //점프 중력
+                {
+                    Gravity = -5;
+                    break;
+                }
+            case "crushBlockGravity": // 블럭 부딫쳤을때 중력
+                {
+                    Gravity = -20;
+                    break;
+                }
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
 
-        if (collision.gameObject.tag.Contains("Box"))
-        {
-            crushbox = true;
-        }
-        if (collision.gameObject.tag.Contains("Ground"))
-        {
-            crushbox = false;
-        }
-    }
+
 }
-
-
-
-
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-//public class MPlayer : MonoBehaviour
-//{
-//    public float speed = 5f;
-//    public int map_trig = 0;
-//    public bool gate =false;
-//    private Coroutine checkCorot;
-//    public Vector3 pipe;
-//    Vector3 dir;
-//    bool crushbox;
-
-//    public Animator animator;
-//    // 0 : 기본상태 1: 점프대 2: 가속
-
-
-//    CharacterController cc;
-
-//    float gravity;
-//    float yVelocity = 0;
-//    float jumpPower = 2f;
-
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        cc = GetComponent<CharacterController>();
-
-//    }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        gravity = crushbox == false ? -5 : -15;
-
-
-//        float h = Input.GetAxis("Horizontal");
-//        float v = Input.GetAxis("Vertical");
-
-//        if (gate == true)
-//        {
-//            gameObject.SetActive(false);
-//            transform.position = pipe;
-//            gameObject.SetActive(true);
-//            gate = false;
-//        }
-//        else
-//        {
-//            if (map_trig == 2)
-//            {
-//                dir = Vector3.right * 2f * h + Vector3.forward * 2f * v;
-//            }
-//            else
-//            {
-//                dir = Vector3.right * h + Vector3.forward * v;
-//                dir.Normalize();
-//            }
-
-
-//            if (map_trig == 1)
-//            {
-//                if (checkCorot == null)
-//                {
-
-//                    yVelocity = 3f;
-//                    checkCorot = StartCoroutine(go());
-
-//                }
-
-//            }
-
-//            if (Input.GetButtonDown("Jump"))
-//            {
-//                yVelocity = jumpPower;
-//            }
-
-//            yVelocity += gravity * Time.deltaTime;
-//            dir += Vector3.up * yVelocity;
-
-//                //transform.position += vec * speed * Time.deltaTime;
-//                cc.Move(dir * speed * Time.deltaTime);
-//        }
-//    }
-//    private IEnumerator go()
-//    {
-//        yield return new WaitForSeconds(0.5f);
-//        map_trig = 0;
-//        checkCorot = null;
-//    }
-
-//    private void OnCollisionEnter(Collision collision)
-//    {
-
-//        if(collision.gameObject.tag.Contains("Box"))
-//        {
-//            crushbox = true;
-//        }
-//        if (collision.gameObject.tag.Contains("Ground"))
-//        {
-//            crushbox = false;
-//        }
-//    }
-//}
-
-
-
-
