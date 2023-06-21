@@ -1,0 +1,143 @@
+newmtl MarioBodyMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioBodyFix_alb.png
+map_d MarioBodyFix_alb.png
+
+newmtl MarioBodyMat01
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioBodyFix_alb.png
+map_d MarioBodyFix_alb.png
+
+newmtl MarioEyeMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioEye_alb.png
+map_d MarioEye_alb.png
+
+newmtl MarioFaceMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioBodyFix_alb.png
+map_d MarioBodyFix_alb.png
+
+newmtl MarioFaceMat00.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioFace_alb.png
+map_d MarioFace_alb.png
+
+newmtl MarioFaceMat00.002
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioFace_alb.png
+map_d MarioFace_alb.png
+
+newmtl MarioFaceMat00.003
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioFace_alb.png
+map_d MarioFace_alb.png
+
+newmtl MarioHandMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioHandNew_alb.png
+map_d MarioHandNew_alb.png
+
+newmtl MarioHandMat00.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioHandNew_alb.png
+map_d MarioHandNew_alb.png
+
+newmtl MarioHigeMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioFace_alb.png
+map_d MarioFace_alb.png
+
+newmtl MarioMetalMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioBodyFix_alb.png
+map_d MarioBodyFix_alb.png
+
+newmtl MarioShoesMat00
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni -1.000000
+d 0.000000
+illum 2
+map_Kd MarioShoes_alb.png
+map_d MarioShoes_alb.png

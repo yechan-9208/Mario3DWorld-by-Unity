@@ -6,6 +6,7 @@ public class InPipe : MonoBehaviour
 {
     Vector3 dir;
     public GameObject Mario;
+    public GameObject Blocking;
     public bool Warp;
     float currentTime = 0;
 
@@ -20,6 +21,11 @@ public class InPipe : MonoBehaviour
     {
         if (Warp)
         {
+            if(Blocking!= null)
+            {
+                Blocking.SetActive(true);
+            }
+            
             currentTime += Time.deltaTime;
             if (currentTime <= 1f)
             {
@@ -38,10 +44,6 @@ public class InPipe : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
-   
-
-
         }
         }
     }
