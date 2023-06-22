@@ -114,19 +114,24 @@ public class MPlayer : MonoBehaviour
         }
         else
         {
+       
+            if (speed > 5f)
+            {
+                anim.SetBool("isAccel", true);
+            }
+            else
+            {
+                anim.SetBool("isAccel", false);
+            }
             anim.SetBool("isRun", true);
+
             if (speed < 8f)
             {
                 speed += 4 * Time.deltaTime;
           
             }
-            if(speed >5f)
-            {
-                anim.SetBool("isAccel", true);
-            }else
-            {
-                anim.SetBool("isAccel", false);
-            }
+
+   
 
             Vector3 face = Vector3.right * h + Vector3.forward * v;
             face.Normalize();
@@ -177,6 +182,7 @@ public class MPlayer : MonoBehaviour
 
     private IEnumerator AccelCoroutine()
     {
+
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isAccel", false);
     }
