@@ -7,6 +7,7 @@ public class PlayerFoot : MonoBehaviour
 
     MPlayer Player;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +30,9 @@ public class PlayerFoot : MonoBehaviour
                 Player.isJunmp = false;
                 Player.gravityCondition = "defaultGravity";
             }
-            //print("foot: " + other);
+
         }
+
     }
 
     private void OnTriggerStay(Collider other)

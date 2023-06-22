@@ -27,21 +27,21 @@ public class MapCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(MPlayer.instance.state);
-        print("sd");
-        if(MPlayer.instance.state == MPlayer.stateConst.CRUSHDOWN)
-        {
-            Vector3 randomPosition = Random.insideUnitSphere * shakeIntensity;
-            transform.localPosition = transform.position + randomPosition;
+        //if (MPlayer.instance.state == null) return;
 
-            currentShakeDuration -= Time.deltaTime;
-            if(currentShakeDuration <= 0)
-            {
-                transform.localPosition = transform.position;
-                MPlayer.instance.state = MPlayer.stateConst.IDLE;
-            }
-        }
-        else
+        //if(MPlayer.instance.state == MPlayer.stateConst.CRUSHDOWN)
+        //{
+        //    Vector3 randomPosition = Random.insideUnitSphere * shakeIntensity;
+        //    transform.localPosition = transform.position + randomPosition;
+
+        //    currentShakeDuration -= Time.deltaTime;
+        //    if(currentShakeDuration <= 0)
+        //    {
+        //        transform.localPosition = transform.position;
+        //        MPlayer.instance.state = MPlayer.stateConst.IDLE;
+        //    }
+        //}
+        //else
         {
             Vector3 desiredPosition = player.transform.position - cameraTransform.forward * 11f + cameraTransform.up * 2f;
 
