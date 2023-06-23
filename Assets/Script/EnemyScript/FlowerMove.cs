@@ -22,13 +22,15 @@ public class FlowerMove : MonoBehaviour
     int IDLE = 0;
     int FIND = 1;
     int ATTACK = 2;
-
+ 
     int state;
 
 
     public int stackf=0;
 
     public GameObject Mario;
+    public GameObject Head;
+    public GameObject Leaf;
     public float speed = 1;
     Vector3 direction;
 
@@ -60,7 +62,7 @@ public class FlowerMove : MonoBehaviour
         {
             UpdateAttack();
         }
-
+       
         //direction = Mario.transform.position - this.transform.position;
         //float size = direction.magnitude;
         //if (size >= 5f && size < 10f)
@@ -89,19 +91,13 @@ public class FlowerMove : MonoBehaviour
         float size = direction.magnitude;
         if (size >= 5f && size < 10f)
         {
+            transform.LookAt(Mario.transform.position, Vector3.up);
+            direction.Normalize();
             this.flowermotion.SetTrigger("find");
             state = FIND;
             //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-            transform.LookAt(Mario.transform.position, Vector3.up);
 
-            direction.Normalize();
         }
-
-
-
-
-
-
     }
 
     private void UpdateFind()
@@ -129,16 +125,26 @@ public class FlowerMove : MonoBehaviour
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
         transform.LookAt(Mario.transform.position, Vector3.up);
+        if (size < 1f)
+        {
+            this.flowermotion.SetTrigger("attack");
 
-        this.flowermotion.SetTrigger("attack");
+        }
 
 
     }
+    
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name.Contains("Mario"))
+        if(other.gameObject.name.Contains("BodyCollider"))
         {
-            Destroy(this.gameObject);            
+            //마리오 목숨 스택 까이는 것.
+        }
+        if (other.gameObject.name.Contains("FootCollider"))
+        {
+            this.flowermotion.SetTrigger("press");
+            Destroy(this.gameObject);
+
         }
     }
 }
