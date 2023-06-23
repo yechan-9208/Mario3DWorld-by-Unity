@@ -20,7 +20,7 @@ public class PlayerBody : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin"))
+        if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin")&& !(other.gameObject.name.Contains("Cloud")))
         {
             Player.isWall = true;
             anim.SetBool("isWall", true);

@@ -60,7 +60,6 @@ public class MPlayer : MonoBehaviour
     #region 시작과 업데이트
     void Start()
     {
-
         state = stateConst.IDLE;
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
@@ -206,7 +205,7 @@ public class MPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isAccel", false);
-        anim.SetBool("isRun", false);
+     
     }
 
 
@@ -244,6 +243,7 @@ public class MPlayer : MonoBehaviour
     bool hipdrop;
     private void UpdateCrushdown()
     {
+        anim.SetBool("isHIpup", false);
         if (isJunmp)
         {
             if (!hipdrop)
@@ -254,7 +254,7 @@ public class MPlayer : MonoBehaviour
 
 
             currentTime += Time.deltaTime;
-            if (currentTime >= 1f)
+            if (currentTime >= 0.7f)
             {
                 speed = 20f;
                 Vector3 newdir = -Vector3.up;
@@ -263,12 +263,14 @@ public class MPlayer : MonoBehaviour
         }
         else
         {
+
+            anim.SetBool("isHIpup",true);
             hipdrop = false;
             currentTime = 0;
             speed = 0;
             state = stateConst.IDLE;
             yVelocity = 0;
-
+           
         }
         #endregion
     }
