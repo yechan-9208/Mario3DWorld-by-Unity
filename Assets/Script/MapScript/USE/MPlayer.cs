@@ -52,8 +52,8 @@ public class MPlayer : MonoBehaviour
     CharacterController cc;
 
     public float gravity = -1f;
-    float yVelocity = 0;
-    public float jumpPower = 2f;
+    public float yVelocity = 0;
+    public float jumpPower = 2;
     #endregion
 
 
@@ -64,6 +64,8 @@ public class MPlayer : MonoBehaviour
         state = stateConst.IDLE;
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
+
+        yVelocity = gravity;
     }
 
 
@@ -91,7 +93,7 @@ public class MPlayer : MonoBehaviour
 
     private void ApplyPush()
     {
-        Vector3 pushDirection = transform.forward * 2;
+        Vector3 pushDirection = transform.forward * 4;
         cc.Move(pushDirection * Time.deltaTime);
     }
 
@@ -100,21 +102,29 @@ public class MPlayer : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
+
         // 달리기 애니메이션 설정
         if ((h == 0 && v == 0))
         {
-            speed = 0f;
             anim.SetBool("isRun", false);
+
+            speed = 0f;
             StartCoroutine(AccelCoroutine());
-            if (anim.GetBool("isAccel")==true)
+            if (anim.GetBool("isAccel") == true)
             {
                 ApplyPush();
             }
-      
+
         }
         else
         {
-       
+
+            if (!anim.GetBool("isRun"))
+            {
+                anim.SetBool("isRun", true);
+            }
+
+
             if (speed > 5f)
             {
                 anim.SetBool("isAccel", true);
@@ -123,24 +133,31 @@ public class MPlayer : MonoBehaviour
             {
                 anim.SetBool("isAccel", false);
             }
-            anim.SetBool("isRun", true);
 
-            if (speed < 8f)
+            if (speed < 0.5f)
             {
-                speed += 4 * Time.deltaTime;
-          
+                speed += 2 * Time.deltaTime;
+            }
+            else if (speed < 5f)
+            {
+                speed += 8 * Time.deltaTime;
             }
 
-   
+
 
             Vector3 face = Vector3.right * h + Vector3.forward * v;
             face.Normalize();
             transform.forward = face;
 
         }
-
+        anim.SetFloat("runBlend", speed);
         dir = Vector3.right * h + Vector3.forward * v;
         dir.Normalize();
+
+        if (cc.isGrounded)
+        {
+           yVelocity = 0;
+        }
 
         // 점프 처리
         if (false == isJunmp)
@@ -151,6 +168,7 @@ public class MPlayer : MonoBehaviour
                 gravityCondition = "jumpGravity"; ; //점프중력
                 yVelocity = jumpPower;
                 anim.SetTrigger("Jump");
+                anim.SetBool("isJump", true);
                 StartCoroutine(jumpCoroutine());
             }
         }
@@ -170,6 +188,7 @@ public class MPlayer : MonoBehaviour
         }
 
 
+        //Vector3 point = UnityEngine.Random.insideUnitSphere * 0.1f;
 
         Gravitycheck(gravityCondition);
         yVelocity += gravity * Time.deltaTime;
@@ -180,11 +199,14 @@ public class MPlayer : MonoBehaviour
     }
 
 
+
+
     private IEnumerator AccelCoroutine()
     {
 
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isAccel", false);
+        anim.SetBool("isRun", false);
     }
 
 
@@ -192,14 +214,15 @@ public class MPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         isJunmp = true;
+        gravityCondition = "jumpGravity";
     }
 
-    float wallJumpPower = 2f;
 
     float currentTime = 0f;
     float MoveTime;
     private void UpdateWallJump()
     {
+        anim.SetTrigger("WallJump");
         MoveTime = 0.4f;
         speed = 3f;
         Vector3 newdir = -dir * 2;
@@ -217,26 +240,34 @@ public class MPlayer : MonoBehaviour
         }
     }
 
+
+    bool hipdrop;
     private void UpdateCrushdown()
     {
         if (isJunmp)
         {
-            speed = 20f;
-            Vector3 newdir = -Vector3.up;
-            cc.Move(newdir * speed * Time.deltaTime);
+            if (!hipdrop)
+            {
+                anim.SetTrigger("HipDrop");
+                hipdrop = true;
+            }
 
 
+            currentTime += Time.deltaTime;
+            if (currentTime >= 1f)
+            {
+                speed = 20f;
+                Vector3 newdir = -Vector3.up;
+                cc.Move(newdir * speed * Time.deltaTime);
+            }
         }
         else
         {
-            currentTime += Time.deltaTime;
-            if (currentTime >= 0.2f)
-            {
-                currentTime = 0;
-                speed = 0;
-                state = stateConst.IDLE;
-    
-            }
+            hipdrop = false;
+            currentTime = 0;
+            speed = 0;
+            state = stateConst.IDLE;
+            yVelocity = 0;
 
         }
         #endregion
@@ -244,29 +275,32 @@ public class MPlayer : MonoBehaviour
 
 
 
-        void Gravitycheck(string gravityCondition)
+    void Gravitycheck(string gravityCondition)
+    {
+        switch (gravityCondition)
         {
-            switch (gravityCondition)
-            {
-                case "defaultGravity": //기본중력
-                    {
-                        Gravity = -0.5f;
-                        break;
-                    }
-                case "jumpGravity": //점프 중력
-                    {
-                        Gravity = -5f;
-                        break;
-                    }
-                case "crushBlockGravity": // 블럭 부딫쳤을때 중력
-                    {
-                        Gravity = -20;
-                        break;
-                    }
-            }
+            case "defaultGravity": //기본중력
+            case "jumpGravity": //점프 중력
+                {
+                    Gravity = -5f;
+                    break;
+                }
+            case "crushBlockGravity": // 블럭 부딫쳤을때 중력
+                {
+                    Gravity = -20;
+                    break;
+                }
         }
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.up * yVelocity);
+    }
 
 
 
-    
+
 }
