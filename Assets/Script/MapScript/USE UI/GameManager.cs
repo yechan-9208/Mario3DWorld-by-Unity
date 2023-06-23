@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameStartUI;
     public GameObject gamingUI;
     public GameObject gameEndUI;
+    public GameObject bigMairo;
+    public GameObject smallMario;
+    
 
 
     public static GameManager instance;
@@ -17,6 +20,19 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    public void BigToSmallMario()
+    {
+        smallMario.transform.position = bigMairo.transform.position;
+        bigMairo.SetActive(false);
+        
+        StartCoroutine(MyCoroutine());
+    }
+    private IEnumerator MyCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        smallMario.SetActive(true);
     }
 
 

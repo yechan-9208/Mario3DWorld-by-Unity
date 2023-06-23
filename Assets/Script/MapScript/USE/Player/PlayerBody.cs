@@ -20,8 +20,9 @@ public class PlayerBody : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin")&& !(other.gameObject.name.Contains("Cloud")))
+        if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin")&& !(other.gameObject.name.Contains("Cloud"))&&!(other.CompareTag("Enemy")))
         {
+ 
             Player.isWall = true;
             anim.SetBool("isWall", true);
         }
@@ -35,4 +36,15 @@ public class PlayerBody : MonoBehaviour
             anim.SetBool("isWall", false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            GameManager.instance.BigToSmallMario();
+
+        }
+    }
+
+
 }

@@ -60,11 +60,16 @@ public class MPlayer : MonoBehaviour
     #region 시작과 업데이트
     void Start()
     {
+
         state = stateConst.IDLE;
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
 
         yVelocity = gravity;
+
+        anim.SetBool("isWall", false);
+        isWall = false;
+        speed = 0;
     }
 
 
@@ -106,13 +111,22 @@ public class MPlayer : MonoBehaviour
         if ((h == 0 && v == 0))
         {
             anim.SetBool("isRun", false);
-
             speed = 0f;
+
+
             StartCoroutine(AccelCoroutine());
-            if (anim.GetBool("isAccel") == true)
+            if(anim.GetBool("isHIpup") ==true)
             {
-                ApplyPush();
+                
             }
+            else
+            {
+                if (anim.GetBool("isAccel") == true)
+                {
+                    ApplyPush();
+                }
+            }
+            
 
         }
         else
@@ -228,7 +242,11 @@ public class MPlayer : MonoBehaviour
         Vector3 updir = Vector3.up * jumpPower;
         cc.Move((newdir + updir) * Time.deltaTime * speed);
 
-        transform.forward = newdir;
+        if (newdir == null) return;
+        else
+        {
+            transform.forward = newdir;
+        }
 
         currentTime += Time.deltaTime;
 
@@ -296,11 +314,6 @@ public class MPlayer : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.up * yVelocity);
-    }
 
 
 
