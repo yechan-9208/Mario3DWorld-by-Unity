@@ -27,7 +27,7 @@ public class BirdMove : MonoBehaviour
             //Vector3 direction = Mario.transform.position - transform.position;
             float size = direction.magnitude;
 
-            if (size < 1f)
+            if (size < 5f)
             {
 
                 direction.Normalize();

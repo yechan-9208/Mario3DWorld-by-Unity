@@ -1,11 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.AI;
-//목표를 향해 이동하고 싶다.
-//public class SetActive();
+
+// 굼바가 할 수 있는 일.
+// 1. Idle + 좁은 범위안을 걸어다닐 수 있다.
+// 2. 만약 플레이어가 5M 안쪽에 있다면
+//    Attack 애니메이션, 플레이어 방향으로 회전, 실제 공격행위
+// 3. 그렇지 않고 만약 플레이어가 10M 안쪽에 있다면
+//    Find 애니메이션, 플레이어 방향으로 회전
+
+// 1. Idle : 만약 10M안쪽인가? 그렇다면 Find상태로 전이
+// 2. Find : 만약 5M안쪽인가? 그렇다면 Attack상태로 전이
+// 3. Attack : 만약 5M보다 큰가? 10M안쪽이면 Find 그렇지 않으면 Idle
+
+
+
 public class EnemyMove : MonoBehaviour
 {
+    int IDLE = 0;
+    int FIND = 1;
+    int ATTACK = 2;
+
+    int state;
+
     public int stack;
     public GameObject Mario;
     public float speed = 3;
@@ -14,28 +31,104 @@ public class EnemyMove : MonoBehaviour
     public Animator goombamotion;
     public float currentAngle;
 
-  
+
     void Start()
     {
+        state = IDLE;
     }
 
     void Update()
     {
-        direction = Mario.transform.position - this.transform.position;
-
-
         //transform.position += direction * speed * Time.deltaTime;
         //Vector3 direction = Mario.transform.position - transform.position;
+        direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-
-        if (size < 10f)
+        if (state == IDLE)
         {
-            this.goombamotion.SetTrigger("find");
-            transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-            direction.Normalize();
-            this.goombamotion.SetTrigger("run");
-            transform.position += direction * speed * Time.deltaTime;
+            UpdateIdle();
         }
+        else if (state == FIND)
+        {
+            UpdateFind();
+        }
+        else if (state == ATTACK)
+        {
+            UpdateAttack();
+        }
+
+
+    }
+    private void UpdateIdle()
+    {
+        float size = direction.magnitude;
+        direction = Mario.transform.position - this.transform.position;
+        if (size > 5 && size < 7)
+        {
+            transform.LookAt(Mario.transform.position, Vector3.up);
+            direction.Normalize();
+
+            //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+            this.goombamotion.SetTrigger("find");
+            state = FIND;
+        }
+
+
+
+    }
+    private void UpdateFind()
+    {
+        direction = Mario.transform.position - this.transform.position;
+        float size = direction.magnitude;
+        transform.LookAt(Mario.transform.position, Vector3.up);
+
+        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        transform.position += direction * speed * Time.deltaTime; 
+        this.goombamotion.SetTrigger("run");
+        if (size < 1)
+        {
+            state = ATTACK;
+        }
+        //if
+    }
+    private void UpdateAttack()
+    {
+        direction = Mario.transform.position - this.transform.position;
+        float size = direction.magnitude;
+        direction.Normalize();
+        transform.LookAt(Mario.transform.position, Vector3.up);
+        transform.position += direction * speed * Time.deltaTime;
+
+        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        this.goombamotion.SetTrigger("attack");
+
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Contains("FootCollider"))
+        {
+            this.goombamotion.SetTrigger("press");
+            Destroy(this.gameObject);
+            
+        }
+        
+        //if(other.gameObject.name.Contains("BodyCollider"))
+        //{
+            //마리오 스택 -1 
+            //잠깐 멈추기.
+        //}
+        
+    }
+}
+
+        //if (size < 10f)
+        //{
+        //    this.goombamotion.SetTrigger("find");
+        //    transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        //    direction.Normalize();
+        //    this.goombamotion.SetTrigger("run");
+        //    transform.position += direction * speed * Time.deltaTime;
+        //}
         //else
         //{
         //    this.goombamotion.SetTrigger("walk");
@@ -49,55 +142,7 @@ public class EnemyMove : MonoBehaviour
         //{
         //    this.goombamotion.SetTrigger("not found");
         //}
-        if (size < 1f)
-        {
-            this.goombamotion.SetTrigger("attack");
-        }
-
-        //transform.LookAt(transform);
-        //transform.rotation = Quaternion.LookRotation(this.transform.rotation, Quaternion.LookRotation.Lerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * speed));
-
-        //NavMeshAgent nav;
-        // Start is called before the first frame update
-        //void Start()
+        //if (size < 1f)
         //{
-
-        //    //direction = Mario.transform.position - this.transform.position;
-        //    //direction.Normalize();
-        //    //nav = GetComponent<NavMeshAgent>();
+        //    this.goombamotion.SetTrigger("attack");
         //}
-
-        //// Update is called once per frame
-        //void Update()
-        //{
-        //    direction = Mario.transform.position - this.transform.position;
-
-
-        //    //transform.position += direction * speed * Time.deltaTime;
-        //    //Vector3 direction = Mario.transform.position - transform.position;
-        //    float size = direction.magnitude;
-
-        //    if (size < 10f)
-        //    {
-        //        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        //        direction.Normalize();
-        //        transform.position += direction * speed * Time.deltaTime;
-
-        //    }
-        //    //transform.LookAt(transform);
-        //    //transform.rotation = Quaternion.LookRotation(this.transform.rotation, Quaternion.LookRotation.Lerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * speed));
-        //}
-        
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name.Contains("Mario"))
-        {
-            print("ds");
-            Destroy(this.gameObject);
-            stack -= 1;
-        }
-    }
-}

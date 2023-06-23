@@ -22,20 +22,20 @@ public class FlowerMove : MonoBehaviour
     int IDLE = 0;
     int FIND = 1;
     int ATTACK = 2;
-
+ 
     int state;
 
 
-    public int stackf;
+    public int stackf=0;
 
     public GameObject Mario;
+    public GameObject Head;
+    public GameObject Leaf;
     public float speed = 1;
     Vector3 direction;
 
     public Animator flowermotion;
     public bool mariomove = false;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +62,7 @@ public class FlowerMove : MonoBehaviour
         {
             UpdateAttack();
         }
-
+       
         //direction = Mario.transform.position - this.transform.position;
         //float size = direction.magnitude;
         //if (size >= 5f && size < 10f)
@@ -91,16 +91,13 @@ public class FlowerMove : MonoBehaviour
         float size = direction.magnitude;
         if (size >= 5f && size < 10f)
         {
+            transform.LookAt(Mario.transform.position, Vector3.up);
+            direction.Normalize();
             this.flowermotion.SetTrigger("find");
             state = FIND;
+            //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+
         }
-        direction.Normalize();
-
-        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-
-
-
-
     }
 
     private void UpdateFind()
@@ -111,8 +108,10 @@ public class FlowerMove : MonoBehaviour
         //    Attack으로 전이
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        if(size < 5f)
+        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        transform.LookAt(Mario.transform.position, Vector3.up);
+
+        if (size < 5f)
         {
             state = ATTACK;
 
@@ -124,17 +123,28 @@ public class FlowerMove : MonoBehaviour
         //    애니메이션, 플레이어 방향으로 회전, 실제 공격행위
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        this.flowermotion.SetTrigger("attack");
+        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        transform.LookAt(Mario.transform.position, Vector3.up);
+        if (size < 1f)
+        {
+            this.flowermotion.SetTrigger("attack");
+
+        }
 
 
     }
-
     
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name.Contains("Mario"))
+        if(other.gameObject.name.Contains("BodyCollider"))
+        {
+            //마리오 목숨 스택 까이는 것.
+        }
+        if (other.gameObject.name.Contains("FootCollider"))
+        {
+            this.flowermotion.SetTrigger("press");
             Destroy(this.gameObject);
+
+        }
     }
 }
