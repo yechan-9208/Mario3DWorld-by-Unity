@@ -28,7 +28,7 @@ public class PlayerFoot : MonoBehaviour
             {
                 if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
                 {
-                    print("11111111111111111111");
+     
                     anim.SetBool("isJump", false);
                     Player.isJunmp = false;
                 }
@@ -42,7 +42,7 @@ public class PlayerFoot : MonoBehaviour
     {
         if (other.gameObject.name.Contains("RealCloud"))
         {
-                print("22222222222222222");
+     
             anim.SetBool("isJump", false);
             Player.isJunmp = false;
         }

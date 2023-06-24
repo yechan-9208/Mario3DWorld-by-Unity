@@ -13,6 +13,7 @@ public class OutPipe : MonoBehaviour
     public bool Horizon;
     public bool Vertical;
 
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,11 @@ public class OutPipe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inpipe)
+        Mario = GameManager.instance.currentMario;
+        anim = GameManager.instance.anim;
+        if (inpipe)
         {
+
             currtTime += Time.deltaTime;
             Mario.GetComponent<CharacterController>().enabled = false;
 
@@ -55,7 +59,9 @@ public class OutPipe : MonoBehaviour
     {
         if(other.gameObject.name.Contains("Mario"))
         {
+            Mario = GameManager.instance.currentMario;
             inpipe = true;
+            anim.SetBool("isPipe", true);
         }
     }
 

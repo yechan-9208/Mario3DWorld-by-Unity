@@ -13,7 +13,7 @@ TagManager:
   - BlueCoin1
   - BlueCoin2
   - BlueCoin3
-  - shell
+  - Enemy
   layers:
   - Default
   - TransparentFX

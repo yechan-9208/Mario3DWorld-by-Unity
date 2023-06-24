@@ -43,6 +43,8 @@ public class MPlayer : MonoBehaviour
     public bool isJunmp;
     public string gravityCondition;
     public bool isWall;
+    public bool isDropDown;
+    public bool cameraShake;
     Vector3 dir;
 
 
@@ -60,12 +62,17 @@ public class MPlayer : MonoBehaviour
     #region 시작과 업데이트
     void Start()
     {
+        jumpPower = 2.4f;
 
         state = stateConst.IDLE;
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
 
         yVelocity = gravity;
+
+        anim.SetBool("isWall", false);
+        isWall = false;
+        speed = 0;
     }
 
 
@@ -107,13 +114,16 @@ public class MPlayer : MonoBehaviour
         if ((h == 0 && v == 0))
         {
             anim.SetBool("isRun", false);
-
             speed = 0f;
+
+
             StartCoroutine(AccelCoroutine());
-            if (anim.GetBool("isAccel") == true)
-            {
-                ApplyPush();
-            }
+
+                if (anim.GetBool("isAccel") == true)
+                {
+                    ApplyPush();
+                }
+     
 
         }
         else
@@ -188,7 +198,7 @@ public class MPlayer : MonoBehaviour
         }
 
 
-        //Vector3 point = UnityEngine.Random.insideUnitSphere * 0.1f;
+    
 
         Gravitycheck(gravityCondition);
         yVelocity += gravity * Time.deltaTime;
@@ -206,7 +216,7 @@ public class MPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isAccel", false);
-        anim.SetBool("isRun", false);
+     
     }
 
 
@@ -229,7 +239,11 @@ public class MPlayer : MonoBehaviour
         Vector3 updir = Vector3.up * jumpPower;
         cc.Move((newdir + updir) * Time.deltaTime * speed);
 
-        transform.forward = newdir;
+        if (newdir == null) return;
+        else
+        {
+            transform.forward = newdir;
+        }
 
         currentTime += Time.deltaTime;
 
@@ -244,6 +258,8 @@ public class MPlayer : MonoBehaviour
     bool hipdrop;
     private void UpdateCrushdown()
     {
+        isDropDown = true;
+        anim.SetBool("isHIpup", false);
         if (isJunmp)
         {
             if (!hipdrop)
@@ -254,7 +270,7 @@ public class MPlayer : MonoBehaviour
 
 
             currentTime += Time.deltaTime;
-            if (currentTime >= 1f)
+            if (currentTime >= 0.7f)
             {
                 speed = 20f;
                 Vector3 newdir = -Vector3.up;
@@ -263,12 +279,15 @@ public class MPlayer : MonoBehaviour
         }
         else
         {
+            cameraShake = true;
+            isDropDown = false;
+            anim.SetBool("isHIpup",true);
             hipdrop = false;
             currentTime = 0;
             speed = 0;
             state = stateConst.IDLE;
             yVelocity = 0;
-
+           
         }
         #endregion
     }
@@ -287,18 +306,13 @@ public class MPlayer : MonoBehaviour
                 }
             case "crushBlockGravity": // 블럭 부딫쳤을때 중력
                 {
-                    Gravity = -20;
+                    Gravity = -35;
                     break;
                 }
         }
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.up * yVelocity);
-    }
 
 
 

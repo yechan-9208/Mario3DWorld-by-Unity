@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MBox : MonoBehaviour
+public class MushBox : MonoBehaviour
 {
 
     #region 변수 선언
     public float countjump = 3f;
     public GameObject box1;
     public GameObject box2;
-    public GameObject Coin;
+    public GameObject mushRoom;
     public bool check_pow = true;
     public bool isTrigAnim;
     bool isDropDown;
@@ -21,9 +21,9 @@ public class MBox : MonoBehaviour
     {
         box1.SetActive(true);
         box2.SetActive(false);
-        if (Coin != null)
+        if (mushRoom != null)
         {
-            Coin.SetActive(false);
+            mushRoom.SetActive(false);
         }
     }
 
@@ -40,14 +40,16 @@ public class MBox : MonoBehaviour
         {
             if (check_pow) // 만약 박스가 pow박스에의해 작동되었는지 (박스가 active false가 되기전에 추가 충돌에 대한 방지)
             {
+
+
                 if (other.gameObject.name.Contains("Pow"))
                 {
                     check_pow = false;
                     countjump = 0;
 
-                    if (Coin != null)
+                    if (mushRoom != null)
                     {
-                        Coin.SetActive(true);
+                        mushRoom.SetActive(true);
                     }
 
                     Movebox();
@@ -65,9 +67,9 @@ public class MBox : MonoBehaviour
                     }
                     else
                     {
-                        if (Coin != null)
+                        if (mushRoom != null)
                         {
-                            Coin.SetActive(true);
+                            mushRoom.SetActive(true);
                         }
 
                         countjump -= 1;
@@ -77,7 +79,7 @@ public class MBox : MonoBehaviour
 
                 else if (other.gameObject.name.Contains("Foot") && MPlayer.instance.isDropDown == true)
                 {
-                   
+
                     isDropDown = true;
                     if (gameObject.name.Contains("Pow"))
                     {
@@ -90,15 +92,15 @@ public class MBox : MonoBehaviour
                     }
                     else
                     {
-                        if (Coin != null)
+                        if (mushRoom != null)
                         {
-                            Coin.SetActive(true);
+                            mushRoom.SetActive(true);
                         }
 
                         countjump -= 1;
                         Movebox();
                     }
-          
+
                 }
             }
 

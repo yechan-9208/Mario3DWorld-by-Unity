@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8da02abbfaa79bf41a8c930eb8404bca
+guid: b8dfa51fc6e0cee43af01390aad1028e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Land
+      name: LandEdit
       takeName: Noesis Frames
-      internalID: 2207850806306222022
+      internalID: 3120389741346720776
       firstFrame: 0
-      lastFrame: 26
+      lastFrame: 22.5
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
