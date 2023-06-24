@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBody : MonoBehaviour
 {
     MPlayer Player;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +20,10 @@ public class PlayerBody : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!other.gameObject.name.Contains("Mario"))
+        if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin"))
         {
             Player.isWall = true;
-            //print("wall");
+            anim.SetBool("isWall", true);
         }
     }
     
@@ -31,7 +32,7 @@ public class PlayerBody : MonoBehaviour
         if (!other.gameObject.name.Contains("Mario"))
         {
             Player.isWall = false;
-
+            anim.SetBool("isWall", false);
         }
     }
 }

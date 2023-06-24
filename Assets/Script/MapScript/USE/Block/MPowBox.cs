@@ -36,7 +36,7 @@ public class MPowBox : MonoBehaviour
     #region 충돌 감지
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Mario") || other.gameObject.name.Contains("Pow"))
+        if (other.gameObject.name.Contains("Head") || other.gameObject.name.Contains("Pow"))
         {
             trig = true;
         }
