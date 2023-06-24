@@ -5,43 +5,40 @@ using UnityEngine;
 public class MapCamera : MonoBehaviour
 {
     public float smoothSpeed;
-    public GameObject player;
+    GameObject player;
     Transform cameraTransform;
     // Start is called before the first frame update
 
-    public float shakeDuration = 0.3f; // 흔들림 지속 시간
-    public float shakeIntensity = 0.1f; // 흔들림 강도
-
-    private Vector3 originalPosition; // 원래 카메라 위치
-    private float currentShakeDuration; // 현재 흔들림 지속 시간
+    //Vector3 point = UnityEngine.Random.insideUnitSphere * 0.1f;
 
 
     void Start()
     {
-        currentShakeDuration = shakeDuration;
-        //originalPosition = transform.localPosition; // 초기 카메라 위치 저장
+        transform.rotation= Quaternion.Euler(27, 0, 0);
         cameraTransform = transform;
         smoothSpeed = 3f;
     }
 
-    // Update is called once per frame
+    float currentTime = 0f;
+    float TargetTime = 0.2f;
     void Update()
     {
-        //if (MPlayer.instance.state == null) return;
+        player = GameManager.instance.currentMario;
+        
+        if(MPlayer.instance.cameraShake)
+        {
+            currentTime += Time.deltaTime;
+            if(currentTime<TargetTime)
+            {
+                Vector3 point = UnityEngine.Random.insideUnitSphere * 0.1f;
+                transform.position += point;
+            }else
+            {
+                currentTime = 0;
+                MPlayer.instance.cameraShake = false;
+            }    
 
-        //if(MPlayer.instance.state == MPlayer.stateConst.CRUSHDOWN)
-        //{
-        //    Vector3 randomPosition = Random.insideUnitSphere * shakeIntensity;
-        //    transform.localPosition = transform.position + randomPosition;
-
-        //    currentShakeDuration -= Time.deltaTime;
-        //    if(currentShakeDuration <= 0)
-        //    {
-        //        transform.localPosition = transform.position;
-        //        MPlayer.instance.state = MPlayer.stateConst.IDLE;
-        //    }
-        //}
-        //else
+        }else
         {
             Vector3 desiredPosition = player.transform.position - cameraTransform.forward * 11f + cameraTransform.up * 2f;
 

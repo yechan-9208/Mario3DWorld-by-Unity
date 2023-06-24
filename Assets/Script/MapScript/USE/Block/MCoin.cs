@@ -7,6 +7,7 @@ public class MCoin : MonoBehaviour
     float speed = 5f;
     Vector3 sum;
     Vector3 dir;
+    public bool isBoxCoin=true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +18,32 @@ public class MCoin : MonoBehaviour
     void Update()
     {
 
+        
         transform.Rotate(0, 3, 0);
 
-        if (transform.position.y - sum.y< 2)
+        if (isBoxCoin)
         {
-            dir = Vector3.up * speed * Time.deltaTime;
-            transform.position += dir;
+            if (transform.position.y - sum.y < 2)
+            {
+                dir = Vector3.up * speed * Time.deltaTime;
+                transform.position += dir;
+            }
+            else
+            {
+                Destroy(gameObject, 0.3f);
+            }
         }else
         {
-            Destroy(gameObject, 0.3f);
+
         }
+    }
 
-
-    
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!isBoxCoin)
+        {
+            UIManager.instance.COIN++;
+            Destroy(gameObject);
+        }
     }
 }

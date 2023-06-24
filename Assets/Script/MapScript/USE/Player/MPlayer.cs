@@ -43,6 +43,8 @@ public class MPlayer : MonoBehaviour
     public bool isJunmp;
     public string gravityCondition;
     public bool isWall;
+    public bool isDropDown;
+    public bool cameraShake;
     Vector3 dir;
 
 
@@ -60,6 +62,7 @@ public class MPlayer : MonoBehaviour
     #region 시작과 업데이트
     void Start()
     {
+        jumpPower = 2.4f;
 
         state = stateConst.IDLE;
         gravityCondition = "defaultGravity";
@@ -115,18 +118,12 @@ public class MPlayer : MonoBehaviour
 
 
             StartCoroutine(AccelCoroutine());
-            if(anim.GetBool("isHIpup") ==true)
-            {
-                
-            }
-            else
-            {
+
                 if (anim.GetBool("isAccel") == true)
                 {
                     ApplyPush();
                 }
-            }
-            
+     
 
         }
         else
@@ -201,7 +198,7 @@ public class MPlayer : MonoBehaviour
         }
 
 
-        //Vector3 point = UnityEngine.Random.insideUnitSphere * 0.1f;
+    
 
         Gravitycheck(gravityCondition);
         yVelocity += gravity * Time.deltaTime;
@@ -261,6 +258,7 @@ public class MPlayer : MonoBehaviour
     bool hipdrop;
     private void UpdateCrushdown()
     {
+        isDropDown = true;
         anim.SetBool("isHIpup", false);
         if (isJunmp)
         {
@@ -281,7 +279,8 @@ public class MPlayer : MonoBehaviour
         }
         else
         {
-
+            cameraShake = true;
+            isDropDown = false;
             anim.SetBool("isHIpup",true);
             hipdrop = false;
             currentTime = 0;
@@ -307,7 +306,7 @@ public class MPlayer : MonoBehaviour
                 }
             case "crushBlockGravity": // 블럭 부딫쳤을때 중력
                 {
-                    Gravity = -20;
+                    Gravity = -35;
                     break;
                 }
         }

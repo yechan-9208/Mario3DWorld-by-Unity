@@ -20,14 +20,13 @@ public class Warp : MonoBehaviour
 
     void Update()
     {
-
+        Mario = GameManager.instance.currentMario;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name.Contains("Mario"))
-            
         {
             if (justone)
             {
@@ -58,6 +57,7 @@ public class Warp : MonoBehaviour
         Mario.SetActive(false);
         yield return new WaitForSeconds(2f);
         Mario.transform.position = WarpPosion.transform.position;
+        GameManager.instance.spwanPosion.position = WarpPosion.transform.position;
         Mario.SetActive(true);
     
       

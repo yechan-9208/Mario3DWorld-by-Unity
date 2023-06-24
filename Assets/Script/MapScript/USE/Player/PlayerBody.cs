@@ -7,16 +7,25 @@ public class PlayerBody : MonoBehaviour
     MPlayer Player;
     public Animator anim;
 
+    Collider body;
+
     // Start is called before the first frame update
     void Start()
     {
         Player = MPlayer.instance;
+        body = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameManager.instance.isInvincible)
+        {
+            body.enabled = false;
+        }else
+        {
+            body.enabled = true;
+        }
     }
     private void OnTriggerStay(Collider other)
     {
@@ -42,7 +51,7 @@ public class PlayerBody : MonoBehaviour
         
         if (other.CompareTag("Enemy"))
         {
-            print(Player.gameObject.name);
+            
             if (Player.gameObject.name.Contains("Big"))
             {
                 GameManager.instance.BigToSmallMario();
