@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameEndUI;
     public GameObject bigMairo;
     public GameObject smallMario;
+    public Transform spwanPosion;
     
 
 
@@ -29,6 +30,14 @@ public class GameManager : MonoBehaviour
         
         StartCoroutine(MyCoroutine());
     }
+
+    public void gameOver()
+    {
+        smallMario.SetActive(false);
+        bigMairo.transform.position = spwanPosion.transform.position;
+        bigMairo.SetActive(true);
+    }
+
     private IEnumerator MyCoroutine()
     {
         yield return new WaitForSeconds(0.2f);

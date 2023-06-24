@@ -39,9 +39,18 @@ public class PlayerBody : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.CompareTag("Enemy"))
         {
-            GameManager.instance.BigToSmallMario();
+            print(Player.gameObject.name);
+            if (Player.gameObject.name.Contains("Big"))
+            {
+                GameManager.instance.BigToSmallMario();
+            }
+            else
+            {
+                GameManager.instance.gameOver();
+            }
 
         }
     }
