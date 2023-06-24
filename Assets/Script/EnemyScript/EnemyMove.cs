@@ -42,6 +42,8 @@ public class EnemyMove : MonoBehaviour
         //transform.position += direction * speed * Time.deltaTime;
         //Vector3 direction = Mario.transform.position - transform.position;
         direction = Mario.transform.position - this.transform.position;
+        direction.y = 0;
+
         float size = direction.magnitude;
         if (state == IDLE)
         {
@@ -60,11 +62,14 @@ public class EnemyMove : MonoBehaviour
     }
     private void UpdateIdle()
     {
-        float size = direction.magnitude;
         direction = Mario.transform.position - this.transform.position;
+        float size = direction.magnitude;
+        direction.y = 0;
+
         if (size > 5 && size < 7)
         {
             transform.LookAt(Mario.transform.position, Vector3.up);
+
             direction.Normalize();
 
             //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
@@ -79,9 +84,11 @@ public class EnemyMove : MonoBehaviour
     {
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
+        direction.y = 0;
         transform.LookAt(Mario.transform.position, Vector3.up);
 
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+
         transform.position += direction * speed * Time.deltaTime; 
         this.goombamotion.SetTrigger("run");
         if (size < 1)

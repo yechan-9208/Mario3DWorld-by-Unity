@@ -22,87 +22,48 @@ public class Koopamove : MonoBehaviour
 {
     int IDLE = 0;
     int FIND = 1;
-    int RUN = 2;
+    
     int ATTACK = 3;
     int PRESS = 4;
     int NOTFOUND = 5;
+    //int CHASE = 6;
     
     int state;
-
+    //bool FollowShell;
     public GameObject Mario;
     public float speed = 3;
     public int kstack = 0;
     Vector3 direction;
+    Vector3 sdirection;
     public GameObject Shell;
-    Vector3 offset = new Vector3(0, 0, 1);
+    public GameObject Naked;
+    Vector3 offset = new Vector3(0, 0, 2);
+    Vector3 offset2 = new Vector3(1, 1, -2);
 
-    //public GameObject shell;
     public Animator koopamotion;
+    private Transform currentTarget;
 
     void Start()
     {
         state = IDLE;
+        //kstack = 0;
+        Mario = GameObject.FindGameObjectWithTag("Player");
         
     }
 
-    
+
     void Update()
     {
-        //    direction = Mario.transform.position - this.transform.position;
-
-
-        //    //transform.position += direction * speed * Time.deltaTime;
-        //    //Vector3 direction = Mario.transform.position - transform.position;
-        //    float size = direction.magnitude;
-
-        //    if ( size >= 1f && size <= 10f)
-        //    {
-        //        transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        //        this.koopamotion.SetTrigger("find");
-        //        this.koopamotion.SetTrigger("run");
-        //        direction.Normalize();
-        //        transform.position += direction * kspeed * Time.deltaTime;
-        //    }
-        //    else if(size > 10f)
-        //    {
-        //        this.koopamotion.SetTrigger("not found");
-        //    }
-        //    else
-        //    {
-        //        //StartCoroutine(Attack);
-        //        this.koopamotion.SetTrigger("attack");
-        //    }
-        //    //IEnumerator Attack()
-        //    //{
-        //    //    yield return new WaitForSeconds();
-
-        //    //}
-        //}
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.gameObject.name.Contains("Mario"))
-        //    {
-
-        //        kstack -= 1;
-        //        if (kstack == -2)
-        //        {
-        //            this.koopamotion.SetTrigger("press2");
-        //            Destroy(this.gameObject);
-        //        }
-
-        //        this.koopamotion.SetTrigger("press1");
-
-        //        direction = shell.transform.position - this.transform.position;
-        //        transform.rotation = Quaternion.LookRotation(shell.transform.position - this.transform.position);
-        //        transform.position += direction * kspeed * Time.deltaTime;
-
-        //    }
-
-        //}
-        //direction = Mario.transform.position - this.transform.position;
-        //float size = direction.magnitude;
+       
      if (state == IDLE)
         {
+            //if(kstack==0)
+            //{
+                currentTarget = Mario.transform;
+            //}
+            
+
+
             UpdateIdle();
         }
         else if (state == FIND)
@@ -121,62 +82,42 @@ public class Koopamove : MonoBehaviour
         {
             UpdateNotfound();
         }
-
-        //if (size < 10f)
+        //else if (state == CHASE)
         //{
-        //    this.goombamotion.SetTrigger("find");
-        //    transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        //    direction.Normalize();
-        //    this.goombamotion.SetTrigger("run");
-        //    transform.position += direction * speed * Time.deltaTime;
-        //}
-        //else
-        //{
-        //    this.goombamotion.SetTrigger("walk");
-        //    //transform.rotation
-        //    //transform.Translate(Vector3.forward * Time.deltaTime, Space.World);
-        //    transform.position += transform.forward * speed * Time.deltaTime;
-        //    //transform.right += 90;
+        //    FollowShell();
+        //    print("l");
         //}
 
-        //else if
-        //{
-        //    this.goombamotion.SetTrigger("not found");
-        //}
-        //if (size < 1f)
-        //{
-        //    this.koopamotion.SetTrigger("attack");
-        //}
-
+   
     }
     private void UpdateIdle()
     {
-        direction = Mario.transform.position - this.transform.position;
+        direction = currentTarget.position - this.transform.position;
         float size = direction.magnitude;
-            direction.Normalize();
+        direction.Normalize();
         if (size > 5 && size < 7f)
         {
-            //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-            this.koopamotion.SetTrigger("find");
+            
             transform.LookAt(Mario.transform.position, Vector3.up);
+            this.koopamotion.SetTrigger("find");
 
             state = FIND;
         }
-        //else if (size < 7f)
-        //{
-        //    state = NOTFOUND;
-        //}
-
-
+     
     }
     private void UpdateFind()
     {
+
         this.koopamotion.SetTrigger("run");
-        direction = Mario.transform.position - this.transform.position;
+        direction = currentTarget.position - this.transform.position;
         float size = direction.magnitude;
+        transform.LookAt(Mario.transform.position, Vector3.up);
+        direction.y = 0;
+        direction.x = 0;
+
         direction.Normalize();
         transform.position += direction * speed * Time.deltaTime;
-        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        
         if (size < 1f)
         {
             state = ATTACK;
@@ -190,33 +131,44 @@ public class Koopamove : MonoBehaviour
     
     private void UpdateAttack()
     {
-        direction = Mario.transform.position - this.transform.position;
+        direction = currentTarget.position - this.transform.position;
         float size = direction.magnitude;
-        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        transform.position += direction * speed * Time.deltaTime;
+        direction.y = 0;
 
         transform.LookAt(Mario.transform.position, Vector3.up);
+
+        transform.position += direction * speed * Time.deltaTime;
+
         direction.Normalize();
         this.koopamotion.SetTrigger("attack");
 
     }
     private void UpdatePress()
     {
-        kstack += 1;
-        if(kstack == 1)
-        {
+        //kstack += 1;
+    
+
+        //if(kstack == 1)
+        //{
+            
             this.koopamotion.SetTrigger("press1");
             Instantiate(Shell, transform.position + offset, Quaternion.identity);
-
-            FollowShell();
-            //transform.position += direction * speed * Time.deltaTime;
-        }
-        if(kstack == 2)
-        {
-            this.koopamotion.SetTrigger("press2");
+            Instantiate(Naked, transform.position + offset2, Quaternion.identity);
+            transform.position +=new Vector3(0,0,-4);
+            //this.koopamotion.SetTrigger("1");
+            //this.koopamotion.SetTrigger("2");
+            print("q");
             Destroy(this.gameObject);
-        }
-        
+            //currentTarget = Shell.transform;
+            //state = CHASE;
+         
+        //}
+        //if(kstack == 2)
+        //{
+        //    this.koopamotion.SetTrigger("press2");
+        //    Destroy(this.gameObject);
+        //}
+
         
     }
     private void UpdateNotfound()
@@ -236,22 +188,28 @@ public class Koopamove : MonoBehaviour
             state = PRESS;
         }
 
-        if (other.gameObject.name.Contains("Shell"))
-        {
-            this.koopamotion.SetTrigger("shell");
-            Destroy(Shell);
+        //if (other.gameObject.name.Contains("Shell"))
+        //{
+        //    this.koopamotion.SetTrigger("shell");
+        //    Destroy(Shell);
+            
 
-        }
+        //}
         
     }
-    private void FollowShell()
-    {
-        direction = Shell.transform.position - this.transform.position;
-        float size = direction.magnitude;
-        direction.Normalize();
-        transform.LookAt(Shell.transform.position, Vector3.up);
+    //private void FollowShell()
+    //{
+    //    currentTarget = Shell.transform;
 
-        transform.position += direction * speed * Time.deltaTime;
-    }
+    //    sdirection = currentTarget.position - this.transform.position;
+    //    sdirection.Normalize();
+    //    transform.LookAt(currentTarget);
+    //    transform.position += sdirection * speed * Time.deltaTime;
+    //    this.koopamotion.SetTrigger("shellchase");
+    //    print("k");
+
+        
+
+    //}
 }
 
