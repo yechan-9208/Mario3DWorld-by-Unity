@@ -159,13 +159,9 @@ public class FlowerMove : MonoBehaviour
         if (other.gameObject.name.Contains("FootCollider"))
         {
             this.flowermotion.SetTrigger("press");
-            Destroy(realFlower);
+            Destroy(realFlower,0.1f);
             Instantiate(Head, transform.position + offset, Quaternion.identity);
-            //Instantiate(Leaf, transform.position + offset, Quaternion.identity);
-            //print("Head");
-            //print("Leaf");
-            //Destroy(Head);
-            //Destroy(Leaf);
+    
 
         }
     }
