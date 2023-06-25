@@ -104,7 +104,10 @@ public class Koopamove : MonoBehaviour
         if (size > 5 && size < 7f)
         {
 
-            transform.LookAt(Mario.transform.position, Vector3.up);
+            //transform.LookAt(Mario.transform.position, Vector3.up);
+            transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
+            transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
+
             this.koopamotion.SetTrigger("find");
 
             state = FIND;
@@ -117,7 +120,7 @@ public class Koopamove : MonoBehaviour
         this.koopamotion.SetTrigger("run");
         direction = currentTarget.position - this.transform.position;
         float size = direction.magnitude;
-        transform.LookAt(Mario.transform.position, Vector3.up);
+        transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
         direction.y = 0;
         //direction.x = 0;
 
@@ -147,7 +150,7 @@ public class Koopamove : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
 
         direction.y = 0;
-        transform.LookAt(Mario.transform.position, Vector3.up);
+        transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
 
 
         direction.Normalize();

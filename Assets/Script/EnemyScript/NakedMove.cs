@@ -60,10 +60,6 @@ public class NakedMove : MonoBehaviour
         this.nakedmotion.SetTrigger("find");
         state = CHACE;
 
-        
-
-
-
     }
     private void UpdateChace()
     {
