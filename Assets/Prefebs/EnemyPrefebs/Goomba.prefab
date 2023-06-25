@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 4723627836598199093}
   m_Layer: 0
   m_Name: Goomba
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,6 +309,9 @@ MonoBehaviour:
   speed: 1
   goombamotion: {fileID: 911571734574729406}
   currentAngle: 0
+  FindParticle: {fileID: 0}
+  ChaseParticle: {fileID: 0}
+  DestroyParticle: {fileID: 0}
 --- !u!1 &911571734565255964
 GameObject:
   m_ObjectHideFlags: 0

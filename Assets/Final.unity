@@ -6423,7 +6423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &286671044
 Transform:
   m_ObjectHideFlags: 0
@@ -44974,14 +44974,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 628922199648207725, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
-      propertyPath: m_Radius
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 770074338371405346, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
-      propertyPath: m_Radius
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 839243843506149216, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
       propertyPath: m_Name
       value: SmallMario
@@ -44989,10 +44981,6 @@ PrefabInstance:
     - target: {fileID: 839243843506149216, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 839243843506149219, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
-      propertyPath: jumpPower
-      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 839243843506149220, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
       propertyPath: m_RootOrder
@@ -45038,10 +45026,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2942400430214595270, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8cb1221d7db67d1498a5c3d686875c9a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
 --- !u!1 &1236407311 stripped
@@ -48518,25 +48502,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 418123613699830044, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
       propertyPath: m_Name
       value: BigMario
-      objectReference: {fileID: 0}
-    - target: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 418123614695860378, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
-      propertyPath: jumpPower
-      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 418123614695860381, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
       propertyPath: m_RootOrder
@@ -48581,14 +48549,6 @@ PrefabInstance:
     - target: {fileID: 418123614695860381, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 418123614847147318, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
-      propertyPath: m_Size.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 418123614847147318, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
-      propertyPath: m_Size.z
-      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
@@ -63665,7 +63625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &392462201153083100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63966,7 +63926,7 @@ MonoBehaviour:
   bigMairo: {fileID: 1458586788}
   smallMario: {fileID: 1236407311}
   currentMario: {fileID: 0}
-  spwanPosion: {fileID: 1426892914}
+  spwanPosion: {fileID: 393074011}
   anim: {fileID: 0}
   isInvincible: 0
 --- !u!4 &1519969663947804598
