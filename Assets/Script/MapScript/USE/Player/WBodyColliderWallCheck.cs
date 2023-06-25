@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBody : MonoBehaviour
+public class WBodyColliderWallCheck : MonoBehaviour
 {
     MPlayer Player;
     public Animator anim;

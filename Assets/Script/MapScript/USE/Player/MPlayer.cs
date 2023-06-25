@@ -209,6 +209,11 @@ public class MPlayer : MonoBehaviour
     }
 
 
+    public void PressEnemy()
+    {
+        yVelocity += 3;
+    }
+
 
 
     private IEnumerator AccelCoroutine()
@@ -232,6 +237,14 @@ public class MPlayer : MonoBehaviour
     float MoveTime;
     private void UpdateWallJump()
     {
+        if(dir.magnitude==0)
+        {
+            state = stateConst.IDLE;
+            return; 
+        }
+
+        print(dir);
+
         anim.SetTrigger("WallJump");
         MoveTime = 0.4f;
         speed = 3f;

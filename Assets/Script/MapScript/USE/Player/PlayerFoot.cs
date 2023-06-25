@@ -33,7 +33,12 @@ public class PlayerFoot : MonoBehaviour
                     Player.isJunmp = false;
                 }
             }
+        }
 
+
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            Player.PressEnemy();
         }
 
     }
