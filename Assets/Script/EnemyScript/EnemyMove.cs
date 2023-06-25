@@ -30,7 +30,7 @@ public class EnemyMove : MonoBehaviour
 
     public Animator goombamotion;
     public float currentAngle;
-    public ParticleSystem FindParticle;
+    //public ParticleSystem FindParticle;
     public ParticleSystem ChaseParticle;
     public ParticleSystem DestroyParticle;
 
@@ -144,17 +144,17 @@ public class EnemyMove : MonoBehaviour
 
         
     }
-    public void findPaticleON()
-    {
-        if (FindParticle.isPlaying) return;
-        FindParticle.Play();
-    }
-    public void findPaticleOff()
-    {
-        if (FindParticle.isPlaying) return;
-        FindParticle.Stop();
+    //public void findPaticleON()
+    //{
+    //    if (FindParticle.isPlaying) return;
+    //    FindParticle.Play();
+    //}
+    //public void findPaticleOff()
+    //{
+    //    if (FindParticle.isPlaying) return;
+    //    FindParticle.Stop();
 
-    }
+    //}
     public void destroyPaticleON()
     {
         if (DestroyParticle.isPlaying) return;

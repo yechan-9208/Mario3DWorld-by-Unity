@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2431612152559408102}
   - component: {fileID: 8853044022912147962}
   m_Layer: 0
-  m_Name: "VFX_PowBox3+\uBCBD\uB3CC"
+  m_Name: VFX_PowBox3block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
