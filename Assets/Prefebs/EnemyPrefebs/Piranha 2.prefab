@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 1198782093992955146}
   m_Layer: 0
   m_Name: Piranha 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,6 +1044,9 @@ MonoBehaviour:
   speed: 0.3
   flowermotion: {fileID: 2321790506717801166}
   mariomove: 0
+  FindParticle: {fileID: 0}
+  AttackParticle: {fileID: 0}
+  DestroyParticle: {fileID: 0}
 --- !u!1 &6811466912859933334
 GameObject:
   m_ObjectHideFlags: 0
