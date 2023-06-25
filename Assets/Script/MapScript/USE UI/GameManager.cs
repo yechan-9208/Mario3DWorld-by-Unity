@@ -52,12 +52,11 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator MyCoroutine()
     {
+        smallMario.SetActive(true);
+        currentMario = smallMario;
         isInvincible = true;
         yield return new WaitForSeconds(0.3f);
-        smallMario.SetActive(true);
-
-        
-        currentMario = smallMario;
+      
         currentMario.transform.Find("Effect").gameObject.SetActive(true);
         playerRenderer = currentMario.transform.Find("Effect").transform.Find("TailMesh").GetComponent<SkinnedMeshRenderer>();
         originalAlpha = playerRenderer.material.color.a;
