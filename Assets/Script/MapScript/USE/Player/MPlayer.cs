@@ -49,6 +49,7 @@ public class MPlayer : MonoBehaviour
     public bool cameraShake;
     public ParticleSystem footParticle1;
     public ParticleSystem footParticle2;
+    public ParticleSystem crushdownParticle;
 
     Vector3 dir;
 
@@ -363,7 +364,19 @@ public class MPlayer : MonoBehaviour
         }
         #endregion
     }
-
+    
+    private void crushdownparticleON()
+    {
+        if (crushdownParticle.isPlaying) return;
+        crushdownParticle.Play();
+        
+    }
+    private void crushdownparticleOFF()
+    {
+        if (!crushdownParticle.isPlaying) return;
+        crushdownParticle.Stop();
+        
+    }
 
 
     void Gravitycheck(string gravityCondition)
