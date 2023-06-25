@@ -8,6 +8,7 @@ public class MCoin : MonoBehaviour
     Vector3 sum;
     Vector3 dir;
     public bool isBoxCoin=true;
+    bool istrig;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +31,11 @@ public class MCoin : MonoBehaviour
             }
             else
             {
+                if (istrig) return;
+                istrig = true;
                 Destroy(gameObject, 0.3f);
+                UIManager.instance.COIN++;
             }
-        }else
-        {
-
         }
     }
 

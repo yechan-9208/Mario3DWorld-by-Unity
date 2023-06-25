@@ -40,6 +40,12 @@ public class MPowBox : MonoBehaviour
         {
             trig = true;
         }
+        else if (other.gameObject.name.Contains("Foot") && MPlayer.instance.isDropDown == true)
+        {
+            trig = true;
+        }
+
+
     }
     #endregion
 }
