@@ -2037,7 +2037,8 @@ MonoBehaviour:
   cameraShake: 0
   footParticle1: {fileID: 4612576683932314782}
   footParticle2: {fileID: 8241336882287914928}
-  crushdownParticle: {fileID: 3140279518019123738, guid: d6aa66dc9bd566940939dd3726205cad, type: 3}
+  crushparticle: {fileID: 0}
+  crushInstance: {fileID: 0}
   anim: {fileID: 418123613477188269}
   gravity: 0
   yVelocity: 0
@@ -22297,7 +22298,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.2, z: 0.4}
+  m_Size: {x: 0.8, y: 0.3, z: 0.8}
   m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!114 &1333040596483577728
 MonoBehaviour:

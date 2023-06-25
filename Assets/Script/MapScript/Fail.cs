@@ -18,7 +18,7 @@ public class Fail : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
+        
         GameManager.instance.DropFail();
     }
 

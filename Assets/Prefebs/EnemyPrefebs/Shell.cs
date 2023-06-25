@@ -14,12 +14,19 @@ public class Shell : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    float currentTime = 0;
+    float TargetTime = 4f;
     void Update()
     {
         if (istrig)
         {
-
             transform.position += direction * 10f * Time.deltaTime;
+        }
+
+        currentTime += Time.deltaTime;
+        if(currentTime>TargetTime)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -32,8 +39,4 @@ public class Shell : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-    }
 }

@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 229236894219109636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 839243843506149220}
@@ -10121,6 +10121,8 @@ MonoBehaviour:
   cameraShake: 0
   footParticle1: {fileID: 4612576684408813156}
   footParticle2: {fileID: 8241336881513354542}
+  crushparticle: {fileID: 0}
+  crushInstance: {fileID: 0}
   anim: {fileID: 169846757749629587}
   gravity: 0
   yVelocity: 0

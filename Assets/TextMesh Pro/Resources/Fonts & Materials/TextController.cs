@@ -7,7 +7,7 @@ using TMPro;
 public class TextController : MonoBehaviour
 
 {
-
+    public GameObject courseClearUi;
 
     public TextMeshProUGUI textComponent;
     public float delayTime = 2f; // 실행까지의 지연 시간
@@ -18,6 +18,7 @@ public class TextController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         // 초기에는 Text 비활성화 상태로 시작합니다.
         textComponent.enabled = false;
     }

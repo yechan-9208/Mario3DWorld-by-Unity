@@ -45,9 +45,10 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {        
         Mario = GameObject.FindGameObjectWithTag("Player");
+        speed = 0.5f;
 
-        direction = Mario.transform.position - this.transform.position;
-        direction.y = 0;
+        //direction = Mario.transform.position - this.transform.position;
+        //direction.y = 0;
 
         float size = direction.magnitude;
         if (state == IDLE)
@@ -72,7 +73,7 @@ public class EnemyMove : MonoBehaviour
         float size = direction.magnitude;
        
 
-        if (size > 5 && size < 7)
+        if (size > 5 && size < 7 && Mario.transform.position.y- transform.position.y<1f)
         {
             transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
             direction.Normalize();
@@ -93,6 +94,14 @@ public class EnemyMove : MonoBehaviour
         chasePaticleON();
   
         this.goombamotion.SetTrigger("run");
+
+        if(size>7f|| Mario.transform.position.y - transform.position.y>1f)
+        {
+            this.goombamotion.SetTrigger("find");
+            state = IDLE;
+        }
+
+
         if (size < 1)
         {
             

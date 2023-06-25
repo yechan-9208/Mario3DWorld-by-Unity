@@ -10,11 +10,13 @@ using Cinemachine;
 
 public class DirectorAction : MonoBehaviour
 {
+
     public PlayableDirector pd;
     public GameObject camarea;
     Camera targetCam;
     public bool isgoal;
     public GameObject gamingUI;
+    public GameObject courseClearUi;
 
     public static DirectorAction instance;
 
@@ -29,6 +31,7 @@ public class DirectorAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    
         targetCam = camarea.GetComponent<Camera>();
         camarea.SetActive(false);
         //Director 오브젝트가 갖고 있는 PlayableDirector 컴포넌트를 가져온다.
@@ -48,9 +51,11 @@ public class DirectorAction : MonoBehaviour
             //현재 진행중인 시간이 전체 시간과 크거나 같으면 (재생시간이 다 되면)
             if (pd.time >= pd.duration)
             {
+                
                 GameManager.instance.gameEndUI.SetActive(true);
                 GameManager.instance.gamingUI.SetActive(false);
-         
+                courseClearUi.SetActive(false);
+
             }
         }
 

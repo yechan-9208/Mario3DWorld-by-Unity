@@ -7,10 +7,12 @@ public class _ : MonoBehaviour
 {
     public GameObject vfx;
     bool istrig;
+    public GameObject courseClearUi;
 
     // Start is called before the first frame update
     void Start()
     {
+        courseClearUi.SetActive(false);
         vfx.SetActive(false);
 
     }
@@ -25,6 +27,7 @@ public class _ : MonoBehaviour
             currentTime += Time.deltaTime;
             if (currentTime > TargetTime)
             {
+                courseClearUi.SetActive(true);
                 if (istrig) return;
                 istrig = true;
                 vfx.transform.position = GameManager.instance.currentMario.transform.position;

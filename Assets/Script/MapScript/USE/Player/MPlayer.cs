@@ -357,8 +357,10 @@ public class MPlayer : MonoBehaviour
         {
             cameraShake = true;
             isDropDown = false;
-            crushdownparticleON();           
-            anim.SetBool("isHIpup",true);            
+            anim.SetBool("isHIpup", true);
+
+
+            crushdownparticleON();
             StartCoroutine(crushdownCoroutine());
 
             hipdrop = false;
@@ -373,6 +375,7 @@ public class MPlayer : MonoBehaviour
     private void crushdownparticleON()
     {
         crushInstance = Instantiate(crushparticle, transform.position, transform.rotation);//vfx생성
+        crushInstance.transform.rotation = Quaternion.Euler(270, 0, 0);
         crushInstance.SetActive(true); //나타내기
     }
     
