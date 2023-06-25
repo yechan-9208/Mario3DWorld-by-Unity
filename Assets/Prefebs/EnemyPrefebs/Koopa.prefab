@@ -10045,7 +10045,7 @@ MonoBehaviour:
   koopamotion: {fileID: 5422775498094750133}
   FindParticle: {fileID: 198858562690846188, guid: 968c924d2be019d4b9e67647551eec3e, type: 3}
   ChaseParticle: {fileID: 3906149470953015942, guid: cf7ac993aa97cbe44a99a2cb988b69e8, type: 3}
-  DestroyParticle: {fileID: 198194127032045410, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  DestroyParticle: {fileID: 1271595301498647088, guid: 7b021024a8561b14e8b06200ee42d64a, type: 3}
 --- !u!1 &5422775498166829270
 GameObject:
   m_ObjectHideFlags: 0

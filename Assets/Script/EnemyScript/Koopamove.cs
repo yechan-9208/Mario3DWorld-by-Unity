@@ -22,7 +22,7 @@ public class Koopamove : MonoBehaviour
 {
     int IDLE = 0;
     int FIND = 1;
-    
+
     int ATTACK = 3;
     int PRESS = 4;
     int NOTFOUND = 5;
@@ -50,9 +50,9 @@ public class Koopamove : MonoBehaviour
 
     void Start()
     {
-        state = IDLE;        
+        state = IDLE;
         Mario = GameObject.FindGameObjectWithTag("Player");
-        
+
     }
 
 
@@ -64,9 +64,9 @@ public class Koopamove : MonoBehaviour
         {
             //if(kstack==0)
             //{
-                currentTarget = Mario.transform;
+            currentTarget = Mario.transform;
             //}
-            
+
 
 
             UpdateIdle();
@@ -80,7 +80,7 @@ public class Koopamove : MonoBehaviour
         {
             UpdateAttack();
         }
-        else if (state ==PRESS)
+        else if (state == PRESS)
         {
             UpdatePress();
         }
@@ -94,7 +94,7 @@ public class Koopamove : MonoBehaviour
         //    print("l");
         //}
 
-   
+
     }
     private void UpdateIdle()
     {
@@ -103,13 +103,13 @@ public class Koopamove : MonoBehaviour
         direction.Normalize();
         if (size > 5 && size < 7f)
         {
-            
+
             transform.LookAt(Mario.transform.position, Vector3.up);
             this.koopamotion.SetTrigger("find");
 
             state = FIND;
         }
-     
+
     }
     private void UpdateFind()
     {
@@ -123,23 +123,23 @@ public class Koopamove : MonoBehaviour
 
         direction.Normalize();
         transform.position += direction * speed * Time.deltaTime;
-        
+
         chasePaticleON();
 
 
         if (size < 1f)
         {
-            
+
             state = ATTACK;
         }
-        else if ( size >= 7f)
+        else if (size >= 7f)
         {
             chasePaticleOff();
             state = NOTFOUND;
         }
 
     }
-    
+
     private void UpdateAttack()
     {
         direction = currentTarget.position - this.transform.position;
@@ -156,25 +156,36 @@ public class Koopamove : MonoBehaviour
         this.koopamotion.SetTrigger("attack");
 
     }
+
+    bool istrig;
     private void UpdatePress()
     {
         //kstack += 1;
-    
+
 
         //if(kstack == 1)
         //{
-            
-            this.koopamotion.SetTrigger("press1");
-            Instantiate(Shell, transform.position + offset, Quaternion.identity);
-            Instantiate(Naked, transform.position + offset2, Quaternion.identity);
-            transform.position +=new Vector3(0,0,-4);         
-            print("q");
-            destroyPaticleON();
-            destroyPaticleOff();
-            Destroy(this.gameObject);
-            //currentTarget = Shell.transform;
-            //state = CHASE;
-         
+        if (istrig) return;
+
+        istrig = true;
+
+
+        this.koopamotion.SetTrigger("press1");
+
+        Instantiate(Shell, transform.position + offset, Quaternion.identity);
+        Instantiate(Naked, transform.position + offset2, Quaternion.identity);
+        transform.position += new Vector3(0, 0, -4);
+
+
+
+        destroyPaticleON();
+        //destroypaticleoff();
+
+        Destroy(this.gameObject);
+
+        //currentTarget = Shell.transform;
+        //state = CHASE;
+
         //}
         //if(kstack == 2)
         //{
@@ -182,7 +193,7 @@ public class Koopamove : MonoBehaviour
         //    Destroy(this.gameObject);
         //}
 
-        
+
     }
     private void UpdateNotfound()
     {
@@ -205,10 +216,10 @@ public class Koopamove : MonoBehaviour
         //{
         //    this.koopamotion.SetTrigger("shell");
         //    Destroy(Shell);
-            
+
 
         //}
-        
+
     }
     public void chasePaticleON()
     {

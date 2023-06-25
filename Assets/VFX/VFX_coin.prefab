@@ -14570,7 +14570,7 @@ GameObject:
   - component: {fileID: 4911722655497904180}
   - component: {fileID: 467966967200189585}
   m_Layer: 0
-  m_Name: "VFX_\uCF54\uC778 \uC0AC\uB77C\uC9C8\uB54C \uB098\uC624\uB294"
+  m_Name: VFX_coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
