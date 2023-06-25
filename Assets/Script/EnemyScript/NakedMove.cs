@@ -25,12 +25,14 @@ public class NakedMove : MonoBehaviour
 
     void Start()
     {
+        Mario = GameObject.FindGameObjectWithTag("Player");
         state = IDLE;
     }
 
     void Update()
     {
-        
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
         direction = Shell.transform.position - this.transform.position;
         direction.y = 0;
 
@@ -48,13 +50,12 @@ public class NakedMove : MonoBehaviour
     }
     private void UpdateIdle()
     {
+
         direction = Shell.transform.position - this.transform.position;
-        
         transform.LookAt(Shell.transform.position, Vector3.up);
-
         direction.Normalize();
-
         direction.y = 0;
+
         transform.LookAt(Shell.transform.position, Vector3.up);
         this.nakedmotion.SetTrigger("find");
         state = CHACE;

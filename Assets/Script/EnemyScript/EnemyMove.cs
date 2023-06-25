@@ -35,12 +35,16 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         state = IDLE;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     void Update()
     {
         //transform.position += direction * speed * Time.deltaTime;
         //Vector3 direction = Mario.transform.position - transform.position;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
         direction = Mario.transform.position - this.transform.position;
         direction.y = 0;
 

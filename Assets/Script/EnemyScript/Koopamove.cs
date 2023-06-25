@@ -54,8 +54,9 @@ public class Koopamove : MonoBehaviour
 
     void Update()
     {
-       
-     if (state == IDLE)
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
+        if (state == IDLE)
         {
             //if(kstack==0)
             //{

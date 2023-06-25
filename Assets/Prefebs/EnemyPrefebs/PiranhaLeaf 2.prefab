@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5737209152954941241}
   m_Layer: 0
   m_Name: PiranhaLeaf 2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,12 +141,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630089061f889e34a8fe62bf626b1989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flowerLeafR: {fileID: 0}
   leafR:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  valuef: 0
 --- !u!1 &8179810501592196286
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,12 +42,16 @@ public class FlowerMove : MonoBehaviour
     void Start()
     {
         state = IDLE;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
         direction = Mario.transform.position - this.transform.position;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
 
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);

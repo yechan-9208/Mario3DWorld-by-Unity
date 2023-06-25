@@ -17,6 +17,8 @@ public class BirdMove : MonoBehaviour
     void Start()
     {
         state = IDLE;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame

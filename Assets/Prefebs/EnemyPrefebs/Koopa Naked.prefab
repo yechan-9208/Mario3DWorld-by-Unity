@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Koopa Naked
       objectReference: {fileID: 0}
+    - target: {fileID: 4397622860350283290, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
 --- !u!1 &8641630183815543447 stripped
@@ -126,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stack: 0
   Shell: {fileID: 7857642699614983450, guid: 2b47c9447a7d97c449a4a23d5b6b8c4a, type: 3}
-  Basic: {fileID: 1307833197152077861, guid: 1f56665f01fc0f74185d55e8596fdeec, type: 3}
-  Mario: {fileID: 1609175742951379830, guid: 9f3c9d24d72befd478e94ab6926b6973, type: 3}
+  Basic: {fileID: 5422775498094750089, guid: d93fcb98997ba324ba4b4b941ba7faa1, type: 3}
+  Mario: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
   speed: 2
   nakedmotion: {fileID: 909579476}
