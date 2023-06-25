@@ -25,6 +25,8 @@ public class BlueSwitch : MonoBehaviour
 
     void Update()
     {
+        
+        
         switch (pase)
         {
             case 1:
@@ -49,11 +51,14 @@ public class BlueSwitch : MonoBehaviour
                 }
             case 3:
                 {
-                    BlueCoinPase[2].SetActive(true); break;
-                    if (BLUECOIN == 23)
+                    BlueCoinPase[2].SetActive(true); 
+
+                    if (BLUECOIN == 30)
                     {
                         UIManager.instance.COIN += 100;
+                        pase = 0;
                     }
+                    break;
                 }
         }
 

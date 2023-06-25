@@ -21,7 +21,8 @@ public class MPlayer : MonoBehaviour
     {
         IDLE,
         WALLJUMP,
-        CRUSHDOWN
+        CRUSHDOWN,
+        START
     }
 
     public stateConst state;
@@ -69,7 +70,7 @@ public class MPlayer : MonoBehaviour
         
         jumpPower = 2.4f;
 
-        state = stateConst.IDLE;
+        state = stateConst.START;
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
 
@@ -101,9 +102,23 @@ public class MPlayer : MonoBehaviour
             case stateConst.CRUSHDOWN:
                 UpdateCrushdown();
                 break;
+
+            case stateConst.START:
+                UpdateStart();
+                break;
+
+
         }
         // 입력 처리
 
+    }
+
+    private void UpdateStart()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            state = stateConst.IDLE;
+        }
     }
 
     private void ApplyPush()
@@ -126,7 +141,7 @@ public class MPlayer : MonoBehaviour
             speed = 0f;
             if (speed == 0)
             {
-                print("sdd");
+                
                 footParticleOff();
             }
 
@@ -281,7 +296,6 @@ public class MPlayer : MonoBehaviour
             return; 
         }
 
-        print(dir);
 
         anim.SetTrigger("WallJump");
         MoveTime = 0.4f;
