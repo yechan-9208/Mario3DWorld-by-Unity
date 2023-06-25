@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5398200139104822413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.29336047
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818572568239156233, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397622860350283290, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_Name
+      value: Koopa Naked
+      objectReference: {fileID: 0}
+    - target: {fileID: 4397622860350283290, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+--- !u!1 &8641630183815543447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4397622860350283290, guid: 4526a46377828114f8687f6de8220e4b, type: 3}
+  m_PrefabInstance: {fileID: 5398200139104822413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &-2525746385433915938
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641630183815543447}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &-8785559558713400225
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641630183815543447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7, y: 2.1, z: 1.35}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!95 &909579476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641630183815543447}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7264aab98921d764292744669a6bc1cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7872707731512808870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641630183815543447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95fced01cb3ee0b41bc84b86346a5923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stack: 0
+  Shell: {fileID: 7857642699614983450, guid: 2b47c9447a7d97c449a4a23d5b6b8c4a, type: 3}
+  Basic: {fileID: 5422775498094750089, guid: d93fcb98997ba324ba4b4b941ba7faa1, type: 3}
+  Mario: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
+  speed: 2
+  nakedmotion: {fileID: 909579476}

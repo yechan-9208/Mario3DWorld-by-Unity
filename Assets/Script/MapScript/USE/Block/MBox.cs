@@ -12,6 +12,8 @@ public class MBox : MonoBehaviour
     public GameObject Coin;
     public bool check_pow = true;
     public bool isTrigAnim;
+    bool isDropDown;
+    bool istrig;
     #endregion
 
     #region 시작과 업데이트
@@ -36,67 +38,107 @@ public class MBox : MonoBehaviour
     {
         if (box1.activeSelf) // 박스가 active false가 됐다면 더이상 작동하지 않기로
         {
-                if (check_pow) // 만약 박스가 pow박스에의해 작동되었는지 (박스가 active false가 되기전에 추가 충돌에 대한 방지)
+            if (check_pow) // 만약 박스가 pow박스에의해 작동되었는지 (박스가 active false가 되기전에 추가 충돌에 대한 방지)
+            {
+                if (other.gameObject.name.Contains("Pow"))
                 {
-                    if (other.gameObject.name.Contains("Pow"))
+                    check_pow = false;
+                    countjump = 0;
+
+                    if (Coin != null)
                     {
-                        check_pow = false;
+                        Coin.SetActive(true);
+                    }
+
+                    Movebox();
+                }
+                else if (other.gameObject.name.Contains("Head"))
+                {
+                    if (gameObject.name.Contains("Pow"))
+                    {
                         countjump = 0;
 
+                        if (box1.activeSelf)
+                        {
+                            Movebox();
+                        }
+                    }
+                    else
+                    {
                         if (Coin != null)
                         {
                             Coin.SetActive(true);
                         }
 
-                        Movebox(0.1f);
-                    }
-                    else if (other.gameObject.name.Contains("Mario"))
-                    {
-                        if (gameObject.name.Contains("Pow"))
-                        {
-                            countjump = 0;
-
-                            if (box1.activeSelf)
-                            {
-                                Movebox(0.1f);
-                            }
-                        }
-                        else
-                        {
-                            if (Coin != null)
-                            {
-                                Coin.SetActive(true);
-                            }
-
-                            countjump -= 1;
-                            Movebox(0.1f);
-                        }
+                        countjump -= 1;
+                        Movebox();
                     }
                 }
-            
+
+                else if (other.gameObject.name.Contains("Foot") && MPlayer.instance.isDropDown == true)
+                {
+                   
+                    isDropDown = true;
+                    if (gameObject.name.Contains("Pow"))
+                    {
+                        countjump = 0;
+
+                        if (box1.activeSelf)
+                        {
+                            Movebox();
+                        }
+                    }
+                    else
+                    {
+                        if (Coin != null)
+                        {
+                            Coin.SetActive(true);
+                        }
+
+                        countjump -= 1;
+                        Movebox();
+                    }
+          
+                }
+            }
+
         }
     }
 
-    void Movebox(float delayTime)
+    void Movebox()
     {
+        if (isTrigAnim) return;
+
+        isTrigAnim = true;
+        istrig = false;
+
 
         if (countjump < 0)
         {
             return;
         }
 
-        iTween.MoveBy(gameObject, iTween.Hash(
-            "y", 0.5,
-            "easeType", iTween.EaseType.easeOutExpo,
-            "delay", delayTime,
-            "speed", 10,
-            "oncompletetarget", gameObject,
-            "oncomplete", nameof(TurnSetDown)));
+
+        if (isDropDown)
+        {
+            Down();
+        }
+        else
+        {
+            Up();
+        }
+
+
 
     }
 
     void TurnSetDown()
     {
+        if (istrig) return;
+        else
+        {
+            istrig = true;
+        }
 
         if (countjump <= 0)
         {
@@ -105,16 +147,44 @@ public class MBox : MonoBehaviour
 
         }
 
+        if (isDropDown)
+        {
+            Up();
+        }
+        else
+        {
+            Down();
+        }
 
+        isTrigAnim = false;
+    }
+    #endregion
+
+
+    void Up()
+    {
+
+
+        iTween.MoveBy(gameObject, iTween.Hash(
+            "y", 0.5,
+            "easeType", iTween.EaseType.easeOutExpo,
+            "delay", 0.1f,
+            "speed", 10,
+            "oncompletetarget", gameObject,
+            "oncomplete", nameof(TurnSetDown)));
+
+    }
+
+    void Down()
+    {
         iTween.MoveBy(gameObject, iTween.Hash(
             "y", -0.5,
             "easeType", iTween.EaseType.easeOutExpo,
             "delay", 0.1f,
-            "speed", 4));
-
+            "speed", 4,
+            "oncompletetarget", gameObject,
+            "oncomplete", nameof(TurnSetDown)));
     }
-    #endregion
-
 
 }
 

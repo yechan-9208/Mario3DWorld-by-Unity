@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7d72668c31ba6cb43a7029dbd05b940b, type: 3}
+      propertyPath: m_TagString
+      value: Box
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7d72668c31ba6cb43a7029dbd05b940b, type: 3}
       propertyPath: m_Name
       value: BlockQuestion

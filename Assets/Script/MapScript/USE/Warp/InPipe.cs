@@ -10,6 +10,8 @@ public class InPipe : MonoBehaviour
     public bool Warp;
     float currentTime = 0;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,9 @@ public class InPipe : MonoBehaviour
     {
         if (Warp)
         {
-            if(Blocking!= null)
+            Mario = GameManager.instance.currentMario;
+            anim = GameManager.instance.anim;
+            if (Blocking!= null)
             {
                 Blocking.SetActive(true);
             }
@@ -37,6 +41,7 @@ public class InPipe : MonoBehaviour
             }
             if(currentTime>=1.5f)
             {
+                anim.SetBool("isPipe", false);
                 Mario.GetComponent<CharacterController>().enabled = true;
                 transform.position += Vector3.down * 2 * Time.deltaTime;
             }

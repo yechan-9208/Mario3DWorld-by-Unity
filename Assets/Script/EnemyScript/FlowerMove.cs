@@ -29,8 +29,11 @@ public class FlowerMove : MonoBehaviour
     public int stackf=0;
 
     public GameObject Mario;
+    public GameObject Head;
+    public GameObject Leaf;
     public float speed = 1;
     Vector3 direction;
+    Vector3 offset = new Vector3(0, 0, 1);
 
     public Animator flowermotion;
     public bool mariomove = false;
@@ -39,12 +42,16 @@ public class FlowerMove : MonoBehaviour
     void Start()
     {
         state = IDLE;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
         direction = Mario.transform.position - this.transform.position;
+        Mario = GameObject.FindGameObjectWithTag("Player");
+
 
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
@@ -60,7 +67,7 @@ public class FlowerMove : MonoBehaviour
         {
             UpdateAttack();
         }
-
+       
         //direction = Mario.transform.position - this.transform.position;
         //float size = direction.magnitude;
         //if (size >= 5f && size < 10f)
@@ -89,19 +96,14 @@ public class FlowerMove : MonoBehaviour
         float size = direction.magnitude;
         if (size >= 5f && size < 10f)
         {
+            transform.LookAt(Mario.transform.position, Vector3.up);
+            direction.Normalize();
             this.flowermotion.SetTrigger("find");
+            this.flowermotion.SetTrigger("find2");
             state = FIND;
             //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-            transform.LookAt(Mario.transform.position, Vector3.up);
 
-            direction.Normalize();
         }
-
-
-
-
-
-
     }
 
     private void UpdateFind()
@@ -113,7 +115,7 @@ public class FlowerMove : MonoBehaviour
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        transform.LookAt(Mario.transform.position, Vector3.up);
+            transform.LookAt(Mario.transform.position, Vector3.up);
 
         if (size < 5f)
         {
@@ -129,16 +131,36 @@ public class FlowerMove : MonoBehaviour
         float size = direction.magnitude;
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
         transform.LookAt(Mario.transform.position, Vector3.up);
+        if (size < 1f)
+        {
+            this.flowermotion.SetTrigger("attack");
 
-        this.flowermotion.SetTrigger("attack");
+        }
+        else if (size >=1f)
+        {
+            this.flowermotion.SetTrigger("wait");
+        }
 
 
     }
+    
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name.Contains("Mario"))
+        //if(other.gameObject.name.Contains("BodyCollider"))
+        //{
+        //    //마리오 목숨 스택 까이는 것.
+        //}
+        if (other.gameObject.name.Contains("FootCollider"))
         {
-            Destroy(this.gameObject);            
+            this.flowermotion.SetTrigger("press");
+            Destroy(this.gameObject);
+            Instantiate(Head, transform.position + offset, Quaternion.identity);
+            Instantiate(Leaf, transform.position + offset, Quaternion.identity);
+            //print("Head");
+            //print("Leaf");
+            //Destroy(Head);
+            //Destroy(Leaf);
+
         }
     }
 }
