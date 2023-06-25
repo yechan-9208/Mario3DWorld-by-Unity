@@ -107,7 +107,9 @@ public class MBox : MonoBehaviour
 
     void Movebox()
     {
+        if (isTrigAnim) return;
 
+        isTrigAnim = true;
         istrig = false;
 
 
@@ -154,7 +156,7 @@ public class MBox : MonoBehaviour
             Down();
         }
 
-
+        isTrigAnim = false;
     }
     #endregion
 

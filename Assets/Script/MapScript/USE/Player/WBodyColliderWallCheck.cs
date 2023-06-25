@@ -6,14 +6,13 @@ public class WBodyColliderWallCheck : MonoBehaviour
 {
     MPlayer Player;
     public Animator anim;
-
     Collider body;
 
     // Start is called before the first frame update
     void Start()
     {
         Player = MPlayer.instance;
-        body = GetComponent<CapsuleCollider>();
+        body = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -31,7 +30,7 @@ public class WBodyColliderWallCheck : MonoBehaviour
     {
         if (!other.gameObject.name.Contains("Mario") && !other.gameObject.name.Contains("Pow") && !other.gameObject.name.Contains("Coin")&& !(other.gameObject.name.Contains("Cloud"))&&!(other.CompareTag("Enemy")))
         {
- 
+            
             Player.isWall = true;
             anim.SetBool("isWall", true);
         }
@@ -43,24 +42,6 @@ public class WBodyColliderWallCheck : MonoBehaviour
         {
             Player.isWall = false;
             anim.SetBool("isWall", false);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if (other.CompareTag("Enemy"))
-        {
-            
-            if (Player.gameObject.name.Contains("Big"))
-            {
-                GameManager.instance.BigToSmallMario();
-            }
-            else
-            {
-                GameManager.instance.gameOver();
-            }
-
         }
     }
 
