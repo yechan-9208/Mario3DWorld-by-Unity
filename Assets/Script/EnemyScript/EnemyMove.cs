@@ -30,6 +30,9 @@ public class EnemyMove : MonoBehaviour
 
     public Animator goombamotion;
     public float currentAngle;
+    public ParticleSystem FindParticle;
+    public ParticleSystem ChaseParticle;
+    public ParticleSystem DestroyParticle;
 
 
     void Start()
@@ -40,9 +43,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     void Update()
-    {
-        //transform.position += direction * speed * Time.deltaTime;
-        //Vector3 direction = Mario.transform.position - transform.position;
+    {        
         Mario = GameObject.FindGameObjectWithTag("Player");
 
         direction = Mario.transform.position - this.transform.position;
@@ -73,10 +74,7 @@ public class EnemyMove : MonoBehaviour
         if (size > 5 && size < 7)
         {
             transform.LookAt(Mario.transform.position, Vector3.up);
-
             direction.Normalize();
-
-            //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
             this.goombamotion.SetTrigger("find");
             state = FIND;
         }
@@ -90,16 +88,16 @@ public class EnemyMove : MonoBehaviour
         float size = direction.magnitude;
         direction.y = 0;
         transform.LookAt(Mario.transform.position, Vector3.up);
-
-        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-
-        transform.position += direction * speed * Time.deltaTime; 
+        transform.position += direction * speed * Time.deltaTime;
+        chasePaticleON();
+        print("l");
         this.goombamotion.SetTrigger("run");
         if (size < 1)
         {
+            
             state = ATTACK;
         }
-        //if
+        
     }
     private void UpdateAttack()
     {
@@ -108,7 +106,7 @@ public class EnemyMove : MonoBehaviour
         direction.Normalize();
         transform.LookAt(Mario.transform.position, Vector3.up);
         transform.position += direction * speed * Time.deltaTime;
-
+        chasePaticleOff();
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
         this.goombamotion.SetTrigger("attack");
 
@@ -122,38 +120,54 @@ public class EnemyMove : MonoBehaviour
             Destroy(this.gameObject);
             
         }
-        
+
         //if(other.gameObject.name.Contains("BodyCollider"))
         //{
             //¸¶¸®¿À ½ºÅÃ -1 
-            //Àá±ñ ¸ØÃß±â.
+            //Invoke("", delay);
         //}
         
     }
+    public void chasePaticleON()
+    {
+        if (ChaseParticle.isPlaying) return;
+        
+            ChaseParticle.Play();
+
+        
+    }
+    public void chasePaticleOff()
+    {
+        if (ChaseParticle.isPlaying) return;
+        
+            ChaseParticle.Stop();
+
+        
+    }
+    public void findPaticleON()
+    {
+        if (FindParticle.isPlaying) return;
+        FindParticle.Play();
+    }
+    public void findPaticleOff()
+    {
+        if (FindParticle.isPlaying) return;
+        FindParticle.Stop();
+
+    }
+    public void destroyPaticleON()
+    {
+        if (DestroyParticle.isPlaying) return;
+        DestroyParticle.Play();
+
+
+    }
+    public void destroyPaticleOff()
+    {
+        if (DestroyParticle.isPlaying) return;
+        DestroyParticle.Stop();
+
+    }
 }
 
-        //if (size < 10f)
-        //{
-        //    this.goombamotion.SetTrigger("find");
-        //    transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-        //    direction.Normalize();
-        //    this.goombamotion.SetTrigger("run");
-        //    transform.position += direction * speed * Time.deltaTime;
-        //}
-        //else
-        //{
-        //    this.goombamotion.SetTrigger("walk");
-        //    //transform.rotation
-        //    //transform.Translate(Vector3.forward * Time.deltaTime, Space.World);
-        //    transform.position += transform.forward * speed * Time.deltaTime;
-        //    //transform.right += 90;
-        //}
-
-        //else if
-        //{
-        //    this.goombamotion.SetTrigger("not found");
-        //}
-        //if (size < 1f)
-        //{
-        //    this.goombamotion.SetTrigger("attack");
-        //}
+        

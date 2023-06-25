@@ -20,7 +20,7 @@ public class NakedMove : MonoBehaviour
 
     public Animator nakedmotion;
 
-    
+    public ParticleSystem ChaseParticle;
 
 
     void Start()
@@ -73,7 +73,8 @@ public class NakedMove : MonoBehaviour
         direction.Normalize();
         transform.LookAt(Shell.transform.position, Vector3.up);
         direction.y = 0;
-        print(direction);
+        
+        chasePaticleON();
         transform.position += direction * speed * Time.deltaTime; 
   
         
@@ -84,10 +85,10 @@ public class NakedMove : MonoBehaviour
         if (other.gameObject.name.Contains("Shell"))
         {
             this.nakedmotion.SetTrigger("recover");
+            Destroy(Shell.gameObject);
             Instantiate(Basic, transform.position + offset, Quaternion.identity);
             
             Destroy(this.gameObject);
-            Destroy(Shell.gameObject);
             
         }
         if(other.gameObject.name.Contains("Mario"))
@@ -97,4 +98,12 @@ public class NakedMove : MonoBehaviour
         
         
     }
-}
+    public void chasePaticleON()
+    {
+        if (!ChaseParticle.isPlaying)
+        {
+            ChaseParticle.Play();
+
+        }
+    }
+} 
