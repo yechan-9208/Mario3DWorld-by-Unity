@@ -43,6 +43,8 @@ public class MCoin : MonoBehaviour
     {
         if(!isBoxCoin)
         {
+            if (istrig) return;
+            istrig = true;
             UIManager.instance.COIN++;
             Destroy(gameObject);
         }

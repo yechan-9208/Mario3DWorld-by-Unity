@@ -75,7 +75,7 @@ public class MBox : MonoBehaviour
                     }
                 }
 
-                else if (other.gameObject.name.Contains("Foot") && MPlayer.instance.isDropDown == true)
+                else if (other.gameObject.name.Contains("FootCollider") && MPlayer.instance.isDropDown == true)
                 {
                    
                     isDropDown = true;

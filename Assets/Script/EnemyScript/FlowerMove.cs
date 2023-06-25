@@ -27,7 +27,7 @@ public class FlowerMove : MonoBehaviour
 
 
     public int stackf=0;
-
+    public GameObject realFlower;
     public GameObject Mario;
     public GameObject Head;
     public GameObject Leaf;
@@ -159,9 +159,9 @@ public class FlowerMove : MonoBehaviour
         if (other.gameObject.name.Contains("FootCollider"))
         {
             this.flowermotion.SetTrigger("press");
-            Destroy(this.gameObject);
+            Destroy(realFlower);
             Instantiate(Head, transform.position + offset, Quaternion.identity);
-            Instantiate(Leaf, transform.position + offset, Quaternion.identity);
+            //Instantiate(Leaf, transform.position + offset, Quaternion.identity);
             //print("Head");
             //print("Leaf");
             //Destroy(Head);
