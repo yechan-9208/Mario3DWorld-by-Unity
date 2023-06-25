@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418123613326419648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2037,6 +2037,7 @@ MonoBehaviour:
   cameraShake: 0
   footParticle1: {fileID: 4612576683932314782}
   footParticle2: {fileID: 8241336882287914928}
+  crushdownParticle: {fileID: 3140279518019123738, guid: d6aa66dc9bd566940939dd3726205cad, type: 3}
   anim: {fileID: 418123613477188269}
   gravity: 0
   yVelocity: 0
@@ -22310,4 +22311,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591e8e70a7f4f2e479fb7afac0add373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}

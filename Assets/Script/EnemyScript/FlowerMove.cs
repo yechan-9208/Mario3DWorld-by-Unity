@@ -100,7 +100,7 @@ public class FlowerMove : MonoBehaviour
         direction.y = 0;
         if (size >= 5f && size < 10f)
         {
-            transform.LookAt(Mario.transform.position, Vector3.up);
+            transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
             direction.Normalize();
             this.flowermotion.SetTrigger("find");
             this.flowermotion.SetTrigger("find2");
@@ -119,7 +119,7 @@ public class FlowerMove : MonoBehaviour
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
         direction.y = 0;
-        transform.LookAt(Mario.transform.position, Vector3.up);
+         transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
 
         if (size < 5f)
         {
@@ -136,7 +136,7 @@ public class FlowerMove : MonoBehaviour
         direction.y = 0;
 
         
-        transform.LookAt(Mario.transform.position, Vector3.up);
+         transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
         if (size < 1f)
         {
             this.flowermotion.SetTrigger("attack");

@@ -87,7 +87,7 @@ public class NakedMove : MonoBehaviour
             Destroy(this.gameObject);
             
         }
-        if(other.gameObject.name.Contains("Mario"))
+        if(other.gameObject.name.Contains("Foot"))
         {
             Destroy(this.gameObject);
         }

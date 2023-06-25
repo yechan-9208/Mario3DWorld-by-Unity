@@ -22,11 +22,9 @@ public class FootColliderEnemyPress : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-
-
         if(other.gameObject.CompareTag("Enemy"))
         {
+            
             Player.PressEnemy();
         }
 

@@ -68,12 +68,13 @@ public class EnemyMove : MonoBehaviour
     private void UpdateIdle()
     {
         direction = Mario.transform.position - this.transform.position;
-        float size = direction.magnitude;
         direction.y = 0;
+        float size = direction.magnitude;
+       
 
         if (size > 5 && size < 7)
         {
-            transform.LookAt(Mario.transform.position, Vector3.up);
+            transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
             direction.Normalize();
             this.goombamotion.SetTrigger("find");
             state = FIND;
@@ -87,10 +88,10 @@ public class EnemyMove : MonoBehaviour
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
         direction.y = 0;
-        transform.LookAt(Mario.transform.position, Vector3.up);
+        transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
         transform.position += direction * speed * Time.deltaTime;
         chasePaticleON();
-        print("l");
+  
         this.goombamotion.SetTrigger("run");
         if (size < 1)
         {
@@ -104,7 +105,7 @@ public class EnemyMove : MonoBehaviour
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
         direction.Normalize();
-        transform.LookAt(Mario.transform.position, Vector3.up);
+        transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
         transform.position += direction * speed * Time.deltaTime;
         chasePaticleOff();
         //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);

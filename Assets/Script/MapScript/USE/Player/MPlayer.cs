@@ -271,8 +271,8 @@ public class MPlayer : MonoBehaviour
 
     public void PressEnemy()
     {
-        gravity = 0;
-        yVelocity += 3;
+        yVelocity = 2;
+ 
     }
 
 

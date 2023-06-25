@@ -38,7 +38,7 @@ public class Koopamove : MonoBehaviour
     public GameObject Shell;
     public GameObject Naked;
     Vector3 offset = new Vector3(0, 0, 2);
-    Vector3 offset2 = new Vector3(1, 1, -2);
+    Vector3 offset2 = new Vector3(0, 0, -2);
 
     public Animator koopamotion;
     private Transform currentTarget;
@@ -104,8 +104,6 @@ public class Koopamove : MonoBehaviour
         if (size > 5 && size < 7f)
         {
 
-            //transform.LookAt(Mario.transform.position, Vector3.up);
-            transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
             transform.LookAt(new Vector3(Mario.transform.position.x, transform.position.y, Mario.transform.position.z), Vector3.up);
 
             this.koopamotion.SetTrigger("find");
