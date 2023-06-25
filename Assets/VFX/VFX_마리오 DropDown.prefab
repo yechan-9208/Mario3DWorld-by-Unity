@@ -26,15 +26,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140279518019123739}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7647842, y: -0.018146846, z: -0.02342258, w: 0.6436048}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.14529677}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4106138411092539124}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -99.84, y: -4.184021, z: 0.80200195}
 --- !u!199 &3140279518019123749
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -116,14 +116,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3140279518019123739}
   serializedVersion: 8
-  lengthInSec: 0.7
-  simulationSpeed: 0.38
+  lengthInSec: 0.36
+  simulationSpeed: 0.22
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -244,7 +244,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 13
+      scalar: 12.73
       minScalar: 8
       maxCurve:
         serializedVersion: 2
@@ -360,8 +360,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.33
-      minScalar: 0.12
+      scalar: 0.27
+      minScalar: 0.04
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -625,7 +625,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.12531464
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -675,7 +675,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    randomizeRotationDirection: 0
+    randomizeRotationDirection: 1
     maxNumParticles: 31
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -736,7 +736,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 4
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
