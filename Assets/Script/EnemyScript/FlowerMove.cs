@@ -34,9 +34,11 @@ public class FlowerMove : MonoBehaviour
     public float speed = 1;
     Vector3 direction;
     Vector3 offset = new Vector3(0, 0, 1);
-
     public Animator flowermotion;
     public bool mariomove = false;
+    public ParticleSystem FindParticle;
+    public ParticleSystem AttackParticle;
+    public ParticleSystem DestroyParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -93,7 +95,9 @@ public class FlowerMove : MonoBehaviour
         // 만약 플레이어가 10M 안쪽에 있다면
         // Find로 전이
         direction = Mario.transform.position - this.transform.position;
+
         float size = direction.magnitude;
+        direction.y = 0;
         if (size >= 5f && size < 10f)
         {
             transform.LookAt(Mario.transform.position, Vector3.up);
@@ -114,8 +118,8 @@ public class FlowerMove : MonoBehaviour
         //    Attack으로 전이
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
-            transform.LookAt(Mario.transform.position, Vector3.up);
+        direction.y = 0;
+        transform.LookAt(Mario.transform.position, Vector3.up);
 
         if (size < 5f)
         {
@@ -129,7 +133,9 @@ public class FlowerMove : MonoBehaviour
         //    애니메이션, 플레이어 방향으로 회전, 실제 공격행위
         direction = Mario.transform.position - this.transform.position;
         float size = direction.magnitude;
-        //transform.rotation = Quaternion.LookRotation(Mario.transform.position - this.transform.position);
+        direction.y = 0;
+
+        
         transform.LookAt(Mario.transform.position, Vector3.up);
         if (size < 1f)
         {
@@ -162,5 +168,45 @@ public class FlowerMove : MonoBehaviour
             //Destroy(Leaf);
 
         }
+    }
+    public void chasePaticleON()
+    {
+        if (!AttackParticle.isPlaying)
+        {
+            AttackParticle.Play();
+
+        }
+    }
+    public void chasePaticleOff()
+    {
+        if (AttackParticle.isPlaying)
+        {
+            AttackParticle.Stop();
+
+        }
+    }
+    public void findPaticleON()
+    {
+        if (FindParticle.isPlaying) return;
+        FindParticle.Play();
+    }
+    public void findPaticleOff()
+    {
+        if (FindParticle.isPlaying) return;
+        FindParticle.Stop();
+
+    }
+    public void destroyPaticleON()
+    {
+        if (DestroyParticle.isPlaying) return;
+        DestroyParticle.Play();
+
+
+    }
+    public void destroyPaticleOff()
+    {
+        if (DestroyParticle.isPlaying) return;
+        DestroyParticle.Stop();
+
     }
 }

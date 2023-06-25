@@ -93,7 +93,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7, y: 2.1, z: 1.35}
+  m_Size: {x: 1, y: 2.1, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!95 &909579476
 Animator:
@@ -134,3 +134,4 @@ MonoBehaviour:
   Mario: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
   speed: 2
   nakedmotion: {fileID: 909579476}
+  ChaseParticle: {fileID: 3906149470953015942, guid: cf7ac993aa97cbe44a99a2cb988b69e8, type: 3}

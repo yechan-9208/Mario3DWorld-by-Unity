@@ -5,18 +5,19 @@ using UnityEngine;
 public class BirdMove : MonoBehaviour
 {
     int IDLE = 0;
-    int RUN = 1;
-
-    int state;
+    
     public GameObject Mario;
     public float speed = 5;
     public bool move = false;
     Vector3 direction;
     public Animator birdmotion;
+
+    public ParticleSystem FlyParticle;
+
     // Start is called before the first frame update
     void Start()
     {
-        state = IDLE;
+        
         Mario = GameObject.FindGameObjectWithTag("Player");
 
     }
@@ -29,9 +30,6 @@ public class BirdMove : MonoBehaviour
         {
             direction = Mario.transform.position - this.transform.position;
 
-
-            //transform.position += direction * speed * Time.deltaTime;
-            //Vector3 direction = Mario.transform.position - transform.position;
             float size = direction.magnitude;
 
             if (size < 5f)
@@ -46,7 +44,16 @@ public class BirdMove : MonoBehaviour
         }
         else if (move == true)
         {
+            flyPaticleON();
             transform.position -= Vector3.down * speed * Time.deltaTime;
+        }
+    }
+    public void flyPaticleON()
+    {
+        if (!FlyParticle.isPlaying)
+        {
+            FlyParticle.Play();
+
         }
     }
     private void OnCollisionEnter(Collision collision)

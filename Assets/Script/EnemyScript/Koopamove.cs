@@ -26,10 +26,10 @@ public class Koopamove : MonoBehaviour
     int ATTACK = 3;
     int PRESS = 4;
     int NOTFOUND = 5;
-    //int CHASE = 6;
-    
     int state;
-    //bool FollowShell;
+
+    private bool isMoving = false;
+
     public GameObject Mario;
     public float speed = 3;
     public int kstack = 0;
@@ -42,11 +42,15 @@ public class Koopamove : MonoBehaviour
 
     public Animator koopamotion;
     private Transform currentTarget;
+    public ParticleSystem FindParticle;
+    public ParticleSystem ChaseParticle;
+    public ParticleSystem DestroyParticle;
+
+
 
     void Start()
     {
-        state = IDLE;
-        //kstack = 0;
+        state = IDLE;        
         Mario = GameObject.FindGameObjectWithTag("Player");
         
     }
@@ -70,6 +74,7 @@ public class Koopamove : MonoBehaviour
         else if (state == FIND)
         {
             UpdateFind();
+            findPaticleON();
         }
         else if (state == ATTACK)
         {
@@ -114,17 +119,22 @@ public class Koopamove : MonoBehaviour
         float size = direction.magnitude;
         transform.LookAt(Mario.transform.position, Vector3.up);
         direction.y = 0;
-        direction.x = 0;
+        //direction.x = 0;
 
         direction.Normalize();
         transform.position += direction * speed * Time.deltaTime;
         
+        chasePaticleON();
+
+
         if (size < 1f)
         {
+            
             state = ATTACK;
         }
         else if ( size >= 7f)
         {
+            chasePaticleOff();
             state = NOTFOUND;
         }
 
@@ -134,13 +144,15 @@ public class Koopamove : MonoBehaviour
     {
         direction = currentTarget.position - this.transform.position;
         float size = direction.magnitude;
-        direction.y = 0;
-
-        transform.LookAt(Mario.transform.position, Vector3.up);
-
         transform.position += direction * speed * Time.deltaTime;
 
+        direction.y = 0;
+        transform.LookAt(Mario.transform.position, Vector3.up);
+
+
         direction.Normalize();
+        chasePaticleOff();
+
         this.koopamotion.SetTrigger("attack");
 
     }
@@ -155,10 +167,10 @@ public class Koopamove : MonoBehaviour
             this.koopamotion.SetTrigger("press1");
             Instantiate(Shell, transform.position + offset, Quaternion.identity);
             Instantiate(Naked, transform.position + offset2, Quaternion.identity);
-            transform.position +=new Vector3(0,0,-4);
-            //this.koopamotion.SetTrigger("1");
-            //this.koopamotion.SetTrigger("2");
+            transform.position +=new Vector3(0,0,-4);         
             print("q");
+            destroyPaticleON();
+            destroyPaticleOff();
             Destroy(this.gameObject);
             //currentTarget = Shell.transform;
             //state = CHASE;
@@ -198,6 +210,46 @@ public class Koopamove : MonoBehaviour
         //}
         
     }
+    public void chasePaticleON()
+    {
+        if (!ChaseParticle.isPlaying)
+        {
+            ChaseParticle.Play();
+
+        }
+    }
+    public void chasePaticleOff()
+    {
+        if (ChaseParticle.isPlaying)
+        {
+            ChaseParticle.Stop();
+
+        }
+    }
+    public void findPaticleON()
+    {
+        if (FindParticle.isPlaying) return;
+        FindParticle.Play();
+    }
+    public void findPaticleOff()
+    {
+        if (FindParticle.isPlaying) return;
+        FindParticle.Stop();
+
+    }
+    public void destroyPaticleON()
+    {
+        if (DestroyParticle.isPlaying) return;
+        DestroyParticle.Play();
+
+
+    }
+    public void destroyPaticleOff()
+    {
+        if (DestroyParticle.isPlaying) return;
+        DestroyParticle.Stop();
+
+    }
     //private void FollowShell()
     //{
     //    currentTarget = Shell.transform;
@@ -209,7 +261,7 @@ public class Koopamove : MonoBehaviour
     //    this.koopamotion.SetTrigger("shellchase");
     //    print("k");
 
-        
+
 
     //}
 }
