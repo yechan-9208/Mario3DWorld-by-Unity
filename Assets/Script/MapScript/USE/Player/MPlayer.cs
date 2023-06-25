@@ -70,8 +70,9 @@ public class MPlayer : MonoBehaviour
     {
         
         jumpPower = 2.4f;
-
-        state = stateConst.START;
+        if(gameObject.name.Contains("Big"))
+        { state = stateConst.START; }
+        
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
 
@@ -270,6 +271,7 @@ public class MPlayer : MonoBehaviour
 
     public void PressEnemy()
     {
+        gravity = 0;
         yVelocity += 3;
     }
 

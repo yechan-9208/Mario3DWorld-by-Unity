@@ -65,6 +65,64 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &229236894219109636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6732297456302434829}
+  - component: {fileID: 8484720763464483586}
+  - component: {fileID: 3967135103880734379}
+  m_Layer: 0
+  m_Name: FootColliderEnemyPress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6732297456302434829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229236894219109636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 839243843506149220}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8484720763464483586
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229236894219109636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.1, z: 0.4}
+  m_Center: {x: 0, y: -0.1, z: 0}
+--- !u!114 &3967135103880734379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229236894219109636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 591e8e70a7f4f2e479fb7afac0add373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &270113805582713525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5040,7 +5098,7 @@ Transform:
   m_Children:
   - {fileID: 560872952484482011}
   m_Father: {fileID: 839243843506149220}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &4612576684408813156
 ParticleSystem:
@@ -9995,11 +10053,11 @@ GameObject:
   - component: {fileID: 770074338371405346}
   m_Layer: 0
   m_Name: SmallMario
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &839243843506149220
 Transform:
   m_ObjectHideFlags: 0
@@ -10017,6 +10075,7 @@ Transform:
   - {fileID: 839243843467889368}
   - {fileID: 1887210752710535715}
   - {fileID: 839243843656393421}
+  - {fileID: 6732297456302434829}
   - {fileID: 3348415666033654733}
   - {fileID: 560872954135377469}
   - {fileID: 3860896383529555319}
@@ -10726,7 +10785,7 @@ Transform:
   - {fileID: 2975081824449437873}
   - {fileID: 3457415663386380973}
   m_Father: {fileID: 839243843506149220}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 181.761, y: 0, z: 0}
 --- !u!1 &2751109065455640639
 GameObject:
@@ -11049,7 +11108,7 @@ Transform:
   m_Children:
   - {fileID: 3860896385116416145}
   m_Father: {fileID: 839243843506149220}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &8241336881513354542
 ParticleSystem:

@@ -36,10 +36,7 @@ public class PlayerFoot : MonoBehaviour
         }
 
 
-        if(other.gameObject.CompareTag("Enemy"))
-        {
-            Player.PressEnemy();
-        }
+  
 
     }
 
