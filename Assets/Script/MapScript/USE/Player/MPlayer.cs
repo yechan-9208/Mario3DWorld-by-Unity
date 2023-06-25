@@ -49,7 +49,10 @@ public class MPlayer : MonoBehaviour
     public bool cameraShake;
     public ParticleSystem footParticle1;
     public ParticleSystem footParticle2;
-    public ParticleSystem crushdownParticle;
+    //public ParticleSystem crushdownParticle;
+    public GameObject crushparticle;
+    public GameObject crushInstance;
+    //private bool playcruch=false;
 
     Vector3 dir;
 
@@ -354,7 +357,10 @@ public class MPlayer : MonoBehaviour
         {
             cameraShake = true;
             isDropDown = false;
-            anim.SetBool("isHIpup",true);
+            crushdownparticleON();           
+            anim.SetBool("isHIpup",true);            
+            StartCoroutine(crushdownCoroutine());
+
             hipdrop = false;
             currentTime = 0;
             speed = 0;
@@ -364,19 +370,21 @@ public class MPlayer : MonoBehaviour
         }
         #endregion
     }
-    
     private void crushdownparticleON()
     {
-        if (crushdownParticle.isPlaying) return;
-        crushdownParticle.Play();
-        
+        crushInstance = Instantiate(crushparticle, transform.position, transform.rotation);//vfx생성
+        crushInstance.SetActive(true); //나타내기
     }
-    private void crushdownparticleOFF()
+    
+
+    
+    private IEnumerator crushdownCoroutine()
     {
-        if (!crushdownParticle.isPlaying) return;
-        crushdownParticle.Stop();
-        
+        yield return new WaitForSeconds(1f); //파괴시간 지연.
+        crushInstance.SetActive(false); //감추기
+        Destroy(crushInstance); //파괴(데이터효율)
     }
+    
 
 
     void Gravitycheck(string gravityCondition)
