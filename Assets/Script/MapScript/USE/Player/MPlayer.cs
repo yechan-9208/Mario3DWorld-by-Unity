@@ -113,6 +113,11 @@ public class MPlayer : MonoBehaviour
 
     }
 
+    public void changeEnd()
+    {
+        state = stateConst.START;
+    }
+
     private void UpdateStart()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

@@ -6,6 +6,8 @@ using UnityEngine.VFX;
 public class _ : MonoBehaviour
 {
     public GameObject vfx;
+    bool istrig;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,16 @@ public class _ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(currentTime);
-        currentTime += Time.deltaTime;
-        if(currentTime>TargetTime)
+        if (DirectorAction.instance.isgoal)
         {
-            vfx.SetActive(true);
+            currentTime += Time.deltaTime;
+            if (currentTime > TargetTime)
+            {
+                if (istrig) return;
+                istrig = true;
+                vfx.transform.position = GameManager.instance.currentMario.transform.position;
+                vfx.SetActive(true);
+            }
         }
     }
 }

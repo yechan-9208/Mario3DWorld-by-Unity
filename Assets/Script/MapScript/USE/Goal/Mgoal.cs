@@ -28,16 +28,20 @@ public class Mgoal : MonoBehaviour
     {
         if (AftCheck)
         {
+  
             currTime += Time.deltaTime;
             if (currTime >= AftFlagTime)
             {
                 child = gameObject.transform.GetChild(1).gameObject;
                 child.SetActive(true);
+                MPlayer.instance.changeEnd();
             }
             if (currTime >= EndTime)
             {
-                GameManager.instance.gameEndUI.SetActive(true);
-                GameManager.instance.gamingUI.SetActive(false);
+                DirectorAction.instance.camarea.SetActive(true);
+                DirectorAction.instance.isgoal = true;
+                DirectorAction.instance.pd.Play();
+
 
             }
         }
