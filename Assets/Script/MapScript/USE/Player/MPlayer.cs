@@ -9,6 +9,7 @@ public class MPlayer : MonoBehaviour
 {
 
     public static MPlayer instance;
+    
 
 
     private void Awake()
@@ -45,6 +46,9 @@ public class MPlayer : MonoBehaviour
     public bool isWall;
     public bool isDropDown;
     public bool cameraShake;
+    public ParticleSystem footParticle1;
+    public ParticleSystem footParticle2;
+
     Vector3 dir;
 
 
@@ -62,6 +66,7 @@ public class MPlayer : MonoBehaviour
     #region 시작과 업데이트
     void Start()
     {
+        
         jumpPower = 2.4f;
 
         state = stateConst.IDLE;
@@ -73,6 +78,9 @@ public class MPlayer : MonoBehaviour
         anim.SetBool("isWall", false);
         isWall = false;
         speed = 0;
+
+        footParticle1.Stop();
+        footParticle2.Stop();
     }
 
 
@@ -113,9 +121,14 @@ public class MPlayer : MonoBehaviour
         // 달리기 애니메이션 설정
         if ((h == 0 && v == 0))
         {
+        
             anim.SetBool("isRun", false);
             speed = 0f;
-
+            if (speed == 0)
+            {
+                print("sdd");
+                footParticleOff();
+            }
 
             StartCoroutine(AccelCoroutine());
 
@@ -160,8 +173,17 @@ public class MPlayer : MonoBehaviour
             transform.forward = face;
 
         }
+            
+
         anim.SetFloat("runBlend", speed);
         dir = Vector3.right * h + Vector3.forward * v;
+        if (speed > 0.5f)
+        {
+            
+            footParticleON();
+
+        }
+
         dir.Normalize();
 
         if (cc.isGrounded)
@@ -175,6 +197,7 @@ public class MPlayer : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
+                footParticleOff();
                 gravityCondition = "jumpGravity"; ; //점프중력
                 yVelocity = jumpPower;
                 anim.SetTrigger("Jump");
@@ -208,6 +231,21 @@ public class MPlayer : MonoBehaviour
 
     }
 
+    public void footParticleON()
+    {
+        if (footParticle1.isPlaying && footParticle2.isPlaying) return;
+        footParticle1.Play();
+        footParticle2.Play();
+
+    }
+
+    public void footParticleOff()
+    {
+        if (!footParticle1.isPlaying && !footParticle2.isPlaying) return;
+        footParticle1.Stop();
+        footParticle2.Stop();
+
+    }
 
     public void PressEnemy()
     {
