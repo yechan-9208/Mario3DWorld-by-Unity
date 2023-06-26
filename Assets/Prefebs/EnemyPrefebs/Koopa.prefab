@@ -9943,6 +9943,7 @@ GameObject:
   - component: {fileID: 5422775498094750132}
   - component: {fileID: 5422775498094750135}
   - component: {fileID: 5422775498094750134}
+  - component: {fileID: 6470720578325644000}
   m_Layer: 0
   m_Name: Koopa
   m_TagString: Enemy
@@ -10023,8 +10024,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7, y: 2.1, z: 1.35}
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Size: {x: 1.7, y: 2.1, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5422775498094750134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10046,6 +10047,19 @@ MonoBehaviour:
   FindParticle: {fileID: 198858562690846188, guid: 968c924d2be019d4b9e67647551eec3e, type: 3}
   ChaseParticle: {fileID: 3906149470953015942, guid: cf7ac993aa97cbe44a99a2cb988b69e8, type: 3}
   DestroyParticle: {fileID: 1271595301498647088, guid: 7b021024a8561b14e8b06200ee42d64a, type: 3}
+--- !u!65 &6470720578325644000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5422775498094750089}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.1, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5422775498166829270
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,9 +18,10 @@ public class TextController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        // 초기에는 Text 비활성화 상태로 시작합니다.
-        textComponent.enabled = false;
+        if (textComponent != null)
+        {
+            textComponent.enabled = false;
+        }
     }
 
     // Update is called once per frame

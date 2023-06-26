@@ -30,7 +30,10 @@ public class EBodyColliderEnemyCheck : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
+
+        string otherTag = other.gameObject.tag;
+ 
+
         if (other.CompareTag("Enemy"))
         {
             

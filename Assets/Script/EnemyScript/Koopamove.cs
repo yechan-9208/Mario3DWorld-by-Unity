@@ -206,20 +206,14 @@ public class Koopamove : MonoBehaviour
     {
         if (other.gameObject.name.Contains("BodyCollider"))
         {
-            //마리오 목숨스택 -1
+            state = PRESS;
         }
         if (other.gameObject.name.Contains("FootCollider"))
         {
             state = PRESS;
         }
 
-        //if (other.gameObject.name.Contains("Shell"))
-        //{
-        //    this.koopamotion.SetTrigger("shell");
-        //    Destroy(Shell);
 
-
-        //}
 
     }
     public void chasePaticleON()

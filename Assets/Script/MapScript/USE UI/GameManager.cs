@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject smallMario;
     public GameObject currentMario;
     public Transform spwanPosion;
+    public Transform endPosition;
 
     public Animator anim;
 
@@ -141,17 +142,36 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentMario==bigMairo)
+        if (currentMario == bigMairo)
         {
             MPlayer.instance.jumpPower = 2.3f;
             anim = currentMario.transform.Find("Mario").GetComponent<Animator>();
-        }else
+        }
+        else
         {
             MPlayer.instance.jumpPower = 2.5f;
             anim = currentMario.transform.Find("MarioMini").GetComponent<Animator>();
         }
-    }
 
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (currentMario == smallMario)
+            {
+                bigMairo.transform.position = smallMario.transform.position;
+                smallMario.SetActive(false);
+                bigMairo.SetActive(true);
+                currentMario = bigMairo;
+                anim = currentMario.transform.Find("Mario").GetComponent<Animator>();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            currentMario.SetActive(false);
+            currentMario.transform.position = endPosition.transform.position;
+            currentMario.SetActive(true);
+        }
+    }
     public void OnMyRePLAY()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
