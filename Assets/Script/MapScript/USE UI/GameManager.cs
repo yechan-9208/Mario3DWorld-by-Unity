@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject smallMario;
     public GameObject currentMario;
     public Transform spwanPosion;
+    public Transform startPosition;
     public Transform endPosition;
 
     public Animator anim;
@@ -169,6 +170,13 @@ public class GameManager : MonoBehaviour
         {
             currentMario.SetActive(false);
             currentMario.transform.position = endPosition.transform.position;
+            currentMario.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            currentMario.SetActive(false);
+            currentMario.transform.position = startPosition.transform.position;
             currentMario.SetActive(true);
         }
     }

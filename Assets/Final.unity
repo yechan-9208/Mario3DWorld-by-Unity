@@ -48573,7 +48573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1426892914}
   m_Layer: 0
-  m_Name: SpwanPoint (1)
+  m_Name: END
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49885,6 +49885,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7192df2eef61c8843845fbcd969df538, type: 3}
+--- !u!1 &1490482954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1490482955}
+  m_Layer: 0
+  m_Name: START
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1490482955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490482954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.21, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495289191 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2743665425748760550, guid: 1c22a54c07f92b44a840d2f09d508f88, type: 3}
@@ -64534,6 +64565,7 @@ MonoBehaviour:
   smallMario: {fileID: 1236407311}
   currentMario: {fileID: 0}
   spwanPosion: {fileID: 393074011}
+  startPosition: {fileID: 1490482955}
   endPosition: {fileID: 1426892914}
   anim: {fileID: 0}
   isInvincible: 0
@@ -75605,8 +75637,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7043313287303620761}
-  m_LocalRotation: {x: -0.000501519, y: 0.9675671, z: -0.25260642, w: -0.0019209858}
-  m_LocalPosition: {x: 17.25, y: 9.353149, z: -10.203751}
+  m_LocalRotation: {x: -0.015299173, y: 0.026436605, z: 0.006594057, w: 0.99951166}
+  m_LocalPosition: {x: 17.157997, y: 9.861923, z: -16.874756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
