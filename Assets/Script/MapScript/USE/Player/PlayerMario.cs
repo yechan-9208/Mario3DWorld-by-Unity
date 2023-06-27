@@ -5,10 +5,10 @@ using UnityEngine;
 
 
 
-public class MPlayer : MonoBehaviour
+public class PlayerMario : MonoBehaviour
 {
 
-    public static MPlayer instance;
+    public static PlayerMario instance;
     
 
 
@@ -22,7 +22,7 @@ public class MPlayer : MonoBehaviour
         IDLE,
         WALLJUMP,
         CRUSHDOWN,
-        START
+        DONTMOVE
     }
 
     public stateConst state;
@@ -41,40 +41,42 @@ public class MPlayer : MonoBehaviour
     #region 변수 선언
     public float speed = 5f;
     public float jumpSpeed = 5f;
-    public bool gate = false;
-    public bool isJunmp;
-    public string gravityCondition;
-    public bool isWall;
-    public bool isDropDown;
-    public bool cameraShake;
-    public ParticleSystem footParticle1;
-    public ParticleSystem footParticle2;
-    //public ParticleSystem crushdownParticle;
-    public GameObject crushparticle;
-    public GameObject crushInstance;
-    //private bool playcruch=false;
-
-    Vector3 dir;
-
-
-    public Animator anim;
-    // 0: 기본상태, 1: 점프대, 2: 가속
-
-    CharacterController cc;
 
     public float gravity = -1f;
     public float yVelocity = 0;
     public float jumpPower = 2;
+
+    public string gravityCondition;
+
+    public bool isJunmp;
+    public bool isWall;
+    public bool isDropDown;
+    public bool cameraShake;
+
+
+    public ParticleSystem footParticle1;
+    public ParticleSystem footParticle2;
+
+    //public GameObject crushparticle;
+    //public GameObject crushInstance;
+
+
+    Vector3 dir;
+
+    public Animator anim;
+
+    CharacterController cc;
+
+
     #endregion
 
 
     #region 시작과 업데이트
     void Start()
     {
-        
         jumpPower = 2.4f;
         if(gameObject.name.Contains("Big"))
-        { state = stateConst.START; }
+        { state = stateConst.DONTMOVE; }
         
         gravityCondition = "defaultGravity";
         cc = GetComponent<CharacterController>();
@@ -108,7 +110,7 @@ public class MPlayer : MonoBehaviour
                 UpdateCrushdown();
                 break;
 
-            case stateConst.START:
+            case stateConst.DONTMOVE:
                 UpdateStart();
                 break;
 
@@ -120,7 +122,7 @@ public class MPlayer : MonoBehaviour
 
     public void changeEnd()
     {
-        state = stateConst.START;
+        state = stateConst.DONTMOVE;
     }
 
     private void UpdateStart()
@@ -287,6 +289,7 @@ public class MPlayer : MonoBehaviour
         anim.SetBool("isAccel", false);
      
     }
+    
 
 
     private IEnumerator jumpCoroutine()
@@ -329,6 +332,7 @@ public class MPlayer : MonoBehaviour
             state = stateConst.IDLE;
         }
     }
+    
 
 
     bool hipdrop;
@@ -360,8 +364,8 @@ public class MPlayer : MonoBehaviour
             anim.SetBool("isHIpup", true);
 
 
-            crushdownparticleON();
-            StartCoroutine(crushdownCoroutine());
+            //crushdownparticleON();
+            //StartCoroutine(crushdownCoroutine());
 
             hipdrop = false;
             currentTime = 0;
@@ -372,21 +376,21 @@ public class MPlayer : MonoBehaviour
         }
         #endregion
     }
-    private void crushdownparticleON()
-    {
-        crushInstance = Instantiate(crushparticle, transform.position, transform.rotation);//vfx생성
-        crushInstance.transform.rotation = Quaternion.Euler(270, 0, 0);
-        crushInstance.SetActive(true); //나타내기
-    }
+    //private void crushdownparticleON()
+    //{
+    //    crushInstance = Instantiate(crushparticle, transform.position, transform.rotation);//vfx생성
+    //    crushInstance.transform.rotation = Quaternion.Euler(270, 0, 0);
+    //    crushInstance.SetActive(true); //나타내기
+    //}
     
 
     
-    private IEnumerator crushdownCoroutine()
-    {
-        yield return new WaitForSeconds(1f); //파괴시간 지연.
-        crushInstance.SetActive(false); //감추기
-        Destroy(crushInstance); //파괴(데이터효율)
-    }
+    //private IEnumerator crushdownCoroutine()
+    //{
+    //    yield return new WaitForSeconds(1f); //파괴시간 지연.
+    //    crushInstance.SetActive(false); //감추기
+    //    Destroy(crushInstance); //파괴(데이터효율)
+    //}
     
 
 

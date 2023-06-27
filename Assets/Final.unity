@@ -6513,6 +6513,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &291519262 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4612576683932314782, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
+  m_PrefabInstance: {fileID: 1458586787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &292708124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35081,6 +35086,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6295fe03d7272594482d13397bf268c4, type: 3}
+--- !u!95 &846105277 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 169846757749629587, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
+  m_PrefabInstance: {fileID: 1236407310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &846761414
 Mesh:
   m_ObjectHideFlags: 0
@@ -45732,13 +45742,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 839243843506149219, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
 --- !u!1 &1236407311 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 839243843506149216, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
   m_PrefabInstance: {fileID: 1236407310}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1236407316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236407311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5239d2101b5344d4f8e5342f56ba51b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  speed: 5
+  jumpSpeed: 5
+  gravity: -1
+  yVelocity: 0
+  jumpPower: 2
+  gravityCondition: 
+  isJunmp: 0
+  isWall: 0
+  isDropDown: 0
+  cameraShake: 0
+  footParticle1: {fileID: 1597695474}
+  footParticle2: {fileID: 1598712895}
+  anim: {fileID: 846105277}
 --- !u!1001 &1236786700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49342,13 +49379,40 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 418123614695860378, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
 --- !u!1 &1458586788 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 418123614695860377, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
   m_PrefabInstance: {fileID: 1458586787}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1458586793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458586788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5239d2101b5344d4f8e5342f56ba51b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  speed: 5
+  jumpSpeed: 5
+  gravity: -1
+  yVelocity: 0
+  jumpPower: 2
+  gravityCondition: 
+  isJunmp: 0
+  isWall: 0
+  isDropDown: 0
+  cameraShake: 0
+  footParticle1: {fileID: 291519262}
+  footParticle2: {fileID: 1525392705}
+  anim: {fileID: 1386953523}
 --- !u!1001 &1459281548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50288,6 +50352,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!198 &1525392705 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8241336882287914928, guid: c8fd43962ec446343969079d8ca1a9da, type: 3}
+  m_PrefabInstance: {fileID: 1458586787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1525956543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51155,6 +51224,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4991689803036056379, guid: 5f7049050eaa4bd41b45de60ec3f6831, type: 3}
   m_PrefabInstance: {fileID: 1752288255}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1597695474 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4612576684408813156, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
+  m_PrefabInstance: {fileID: 1236407310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1597822581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51220,6 +51294,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4991689803036056379, guid: 5f7049050eaa4bd41b45de60ec3f6831, type: 3}
   m_PrefabInstance: {fileID: 1597822581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1598712895 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8241336881513354542, guid: 31716b7ce0bc201479d3d9f66f7c6006, type: 3}
+  m_PrefabInstance: {fileID: 1236407310}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1607116285
 PrefabInstance:

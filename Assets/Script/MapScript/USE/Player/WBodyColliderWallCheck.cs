@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WBodyColliderWallCheck : MonoBehaviour
 {
-    MPlayer Player;
+    PlayerMario Player;
     public Animator anim;
     Collider body;
 
     // Start is called before the first frame update
     void Start()
     {
-        Player = MPlayer.instance;
+        Player = PlayerMario.instance;
         body = GetComponent<BoxCollider>();
     }
 

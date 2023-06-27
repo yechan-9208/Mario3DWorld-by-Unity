@@ -145,12 +145,12 @@ public class GameManager : MonoBehaviour
     {
         if (currentMario == bigMairo)
         {
-            MPlayer.instance.jumpPower = 2.3f;
+            PlayerMario.instance.jumpPower = 2.3f;
             anim = currentMario.transform.Find("Mario").GetComponent<Animator>();
         }
         else
         {
-            MPlayer.instance.jumpPower = 2.5f;
+            PlayerMario.instance.jumpPower = 2.5f;
             anim = currentMario.transform.Find("MarioMini").GetComponent<Animator>();
         }
 

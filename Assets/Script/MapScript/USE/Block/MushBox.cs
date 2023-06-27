@@ -77,7 +77,7 @@ public class MushBox : MonoBehaviour
                     }
                 }
 
-                else if (other.gameObject.name.Contains("Foot") && MPlayer.instance.isDropDown == true)
+                else if (other.gameObject.name.Contains("Foot") && PlayerMario.instance.isDropDown == true)
                 {
 
                     isDropDown = true;

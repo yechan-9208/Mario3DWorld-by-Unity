@@ -5,13 +5,13 @@ using UnityEngine;
 public class FootColliderEnemyPress : MonoBehaviour
 {
 
-    MPlayer Player;
+    PlayerMario Player;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        Player = MPlayer.instance;
+        Player = PlayerMario.instance;
     }
 
     // Update is called once per frame

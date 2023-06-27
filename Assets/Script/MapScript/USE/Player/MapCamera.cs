@@ -25,7 +25,7 @@ public class MapCamera : MonoBehaviour
     {
         player = GameManager.instance.currentMario;
         
-        if(MPlayer.instance.cameraShake)
+        if(PlayerMario.instance.cameraShake)
         {
             currentTime += Time.deltaTime;
             if(currentTime<TargetTime)
@@ -35,7 +35,7 @@ public class MapCamera : MonoBehaviour
             }else
             {
                 currentTime = 0;
-                MPlayer.instance.cameraShake = false;
+                PlayerMario.instance.cameraShake = false;
             }    
 
         }else

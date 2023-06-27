@@ -34,7 +34,7 @@ public class Mgoal : MonoBehaviour
             {
                 child = gameObject.transform.GetChild(1).gameObject;
                 child.SetActive(true);
-                MPlayer.instance.changeEnd();
+                PlayerMario.instance.changeEnd();
             }
             if (currTime >= EndTime)
             {

@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerFoot : MonoBehaviour
 {
 
-    MPlayer Player;
+    PlayerMario Player;
     public Animator anim;
     
     // Start is called before the first frame update
     void Start()
     {
-        Player = MPlayer.instance;
+        Player = PlayerMario.instance;
     }
 
     // Update is called once per frame

@@ -23,7 +23,7 @@ public class CameraMove : MonoBehaviour
     void Update()
     {
 
-        MPlayer Mario = new MPlayer();
+        PlayerMario Mario = new PlayerMario();
         this.speed = Mario.speed;
 
 

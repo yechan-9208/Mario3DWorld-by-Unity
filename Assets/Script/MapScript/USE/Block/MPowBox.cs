@@ -40,7 +40,7 @@ public class MPowBox : MonoBehaviour
         {
             trig = true;
         }
-        else if (other.gameObject.name.Contains("Foot") && MPlayer.instance.isDropDown == true)
+        else if (other.gameObject.name.Contains("Foot") && PlayerMario.instance.isDropDown == true)
         {
             trig = true;
         }
