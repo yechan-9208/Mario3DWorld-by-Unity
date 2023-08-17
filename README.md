@@ -9,4 +9,4 @@
 * 류지민 : 캐릭터 담당
 
 # PPT 및 영상 보기
-https://mtvs.kr/user/project/view
+https://www.youtube.com/watch?v=RoNp-CZdqho&t=1s
