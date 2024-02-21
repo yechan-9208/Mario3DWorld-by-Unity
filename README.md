@@ -11,6 +11,17 @@
 # Copy 대상 : [ 슈퍼 마리오 3D 월드 1-3 맵 ]
 참고 링크 ( https://www.youtube.com/watch?v=orzi0Cu_Jik )
 
+# 최종 영상 링크 
+https://www.youtube.com/watch?v=RoNp-CZdqho&t=1s
+
+## 시작 UI
+
+https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/18b9a0bc-1de8-4ae7-a84f-1d00c2b2fe02
+
+### [ 시작 UI ]
+### 버튼 1번을 누르면 게임 시작과 함께 소리가 나옵니다.
+
+
 ***
 ## 캐릭터 설정
   
@@ -18,13 +29,13 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/18de4f41-ce
 
 ### [ 기본 움직임 ]
 ### 방향키를 누른 순간 (최저 속도) 부터 방향키를 누르고 있는 동안 (최고 속도) 속도를 다르게 설정하여 움직임을 자연스럽게 하였습니다.
-
+***
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/050aa792-fcf4-4b04-8f03-f5f267d49287
 
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/2c7d24ed-a992-49e3-9949-8e06cc501278
 ### [ 추가 움직임 ]
 ### 엉덩방아 찢기와 벽 점프를 구현하였습니다. 엉덩 방아 찢기를 할때 카메라 쉐이크 효과를 주었습니다.
-
+***
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/6ecf46f5-87eb-4c6d-a95f-cad56fd3f582
 
 ### [ 마리오 크기 변경 ]
@@ -38,16 +49,17 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/6ecf46f5-87
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/fd2382d9-f668-4ce3-b1cc-1e2d1fed205b
 ### [ 굼바 ]
 ### 마리오와 일정거리가 가까워지면 마리오를 따라다닙니다.
-
+***
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/a2d7c5d1-7140-4b83-87e8-6871dccabfd2
 ### [ 뻐끔 플라워 ]
 ### 마리오와 일정거리가 가까워지면 제자리에서 마리오 방향으로 쳐다봅니다.
-
-
+***
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/f7505ff2-7829-4fec-805f-66be92ad0849
 ### [ 엉금엉금 ]
 ### 마리오와 일정거리가 가까워지면 마리오를 따라다닙니다. 처음 밟히면 등 껍질과 분리가 됩니다.
 ### 등 껍질과 만나게 되면 다시 등 껍질을 입습니다. 총 2번 밟으면 죽습니다. 또한 마리오는 등껍질을 발로 찰 수있습니다.
+
+***
 
 ## 맵
 
@@ -57,25 +69,30 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/33e09667-e5
 
 ### [ 블럭 ]
 ### 마리오는 머리나 엉덩 방아로 블럭과 상호 작용을 할 수 있고 블럭에 따라 코인, 버섯등이 나옵니다.
-
+***
 
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/31eb9550-26bf-4faf-a7ac-5813c55bbf1c
 
 ### [ 비밀방 ]
 ### 월드 1-3맵에 있는 비밀 방을 구현하였습니다.
-
+***
 
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/4eef5ac6-a771-40f3-8ee0-7c310c8b215c
 
 ### [ 세이브 포인트 ]
 ### 맵 중간에 죽어도 다시 살아 날 수 있는 세이브 포인트를 구현하였습니다.
+***
 
 ## 게임 종료
 
+https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/0f41ea1b-a05f-495c-9fa3-a0960b9c5aa2
 
 ### [ 게임 종료 ]
-### 마리오가 골대에 도착하면 시네머신이 작동되고 이후 
+### 마리오가 골대에 도착하면 시네머신이 작동되고 이후 게임 종료 UI가 나옵니다.
 
 
-# 최종 영상 링크
-https://www.youtube.com/watch?v=RoNp-CZdqho&t=1s
+# 참고 사이트
+슈퍼마리오 에셋 - (https://hellofangaming.github.io/HelloMarioAssets/)
+맵 원본 영상 - (https://www.youtube.com/watch?v=orzi0Cu_Jik)
+사운드 - (https://downloads.khinsider.com/game-soundtracks/album/super-mario-3d-world-soundtrack)
+
