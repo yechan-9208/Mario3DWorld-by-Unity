@@ -6,13 +6,15 @@
 # 📄멤버구성
 * 원예찬 :  UI, 배경, 카메라, 캐릭터 담당
 * 서민경 : 적 담당
-* 류지민 : 캐릭터 & 배경 & 시네머신 담당
+* 류지민 : 캐릭터, 배경, 시네머신 담당
 
 # Copy 대상 : [ 슈퍼 마리오 3D 월드 1-3 맵 ]
 참고 링크 ( https://www.youtube.com/watch?v=orzi0Cu_Jik )
 
 # 최종 영상 링크 
-https://www.youtube.com/watch?v=RoNp-CZdqho&t=1s
+
+## 아래 이미지를 클릭하면 최종 Youtube 영상으로 들어가집니다.
+[![메타버스 유튜브](https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/b2d7be51-5df7-4182-b155-5fa72164c1b8)](https://www.youtube.com/watch?v=RoNp-CZdqho&t=1s)
 
 ## 시작 UI
 
@@ -22,8 +24,13 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/18b9a0bc-1d
 ### 버튼 1번을 누르면 게임 시작과 함께 소리가 나옵니다.
 
 
+
 ***
 ## 캐릭터 설정
+
+<details>
+  <summary>캐릭터 관련 영상보기</summary>
+</br>
   
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/18de4f41-ce0b-4da3-ac62-2a195cdbfaa9
 
@@ -43,9 +50,14 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/6ecf46f5-87
 ### (에셋이 없는 관계로 데미지를 받고 일정 시간 동안 무적 상태를 머리 위 도형으로 표현하였습니다)
 
 ***
+</details>
+
 
 ## 적 설정
-
+<details>
+  <summary>적 관련 영상보기</summary>
+</br>
+  
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/fd2382d9-f668-4ce3-b1cc-1e2d1fed205b
 ### [ 굼바 ]
 ### 마리오와 일정거리가 가까워지면 마리오를 따라다닙니다.
@@ -60,8 +72,17 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/f7505ff2-78
 ### 등 껍질과 만나게 되면 다시 등 껍질을 입습니다. 총 2번 밟으면 죽습니다. 또한 마리오는 등껍질을 발로 찰 수있습니다.
 
 ***
+</details>
+
+
+
+
 
 ## 맵
+<details>
+  <summary>맵 관련 영상보기</summary>
+
+</br>
 
 https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/07fab78c-66c2-424a-a377-9c0d871c396a
 
@@ -82,6 +103,10 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/4eef5ac6-a7
 ### [ 세이브 포인트 ]
 ### 맵 중간에 죽어도 다시 살아 날 수 있는 세이브 포인트를 구현하였습니다.
 ***
+  
+</details>
+
+
 
 ## 게임 종료
 
@@ -92,7 +117,7 @@ https://github.com/yechan-9208/Mario3DWorld-by-Unity/assets/83994550/0f41ea1b-a0
 
 
 # 참고 사이트
-슈퍼마리오 에셋 - (https://hellofangaming.github.io/HelloMarioAssets/)
-맵 원본 영상 - (https://www.youtube.com/watch?v=orzi0Cu_Jik)
+슈퍼마리오 에셋 - (https://hellofangaming.github.io/HelloMarioAssets/) </br>
+맵 원본 영상 - (https://www.youtube.com/watch?v=orzi0Cu_Jik) </br>
 사운드 - (https://downloads.khinsider.com/game-soundtracks/album/super-mario-3d-world-soundtrack)
 
